@@ -1,0 +1,10 @@
+@import '../headerFolder/header.scss';
+@import '../articlesFolder/printArt.scss';
+
+.wrapper{
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

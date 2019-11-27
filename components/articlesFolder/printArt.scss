@@ -1,0 +1,37 @@
+@import '../../index.scss';
+
+.article {
+  padding: 0;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  .article__cat {
+    list-style: none;
+    max-width: 400px;
+    color: $primary-text;
+    background-color: $primary-background;
+    border-radius: 0.5rem;
+    margin: auto;
+    margin-top: 10px;
+    .article__cat__box {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+      .img {
+        width: 100%;
+        border-radius: 0.5rem;
+      }
+      .article__cat__box__div{
+          margin-bottom: 1rem;
+      }
+      button{
+        margin: auto;
+      }
+    }
+  }
+}
+
+figure{
+    margin: 0;
+}

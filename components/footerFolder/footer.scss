@@ -1,0 +1,12 @@
+@import '../../index.scss';
+
+footer{
+    position: fixed;
+    background-color: $primary-background;
+    color: $primary-text;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid red;
+}
