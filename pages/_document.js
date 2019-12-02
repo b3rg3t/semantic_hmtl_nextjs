@@ -10,7 +10,10 @@ class MyDocument extends Document {
     render() {
       return (
         <html lang="sv">
-          <Head />
+          <Head>
+          <meta name="theme-color" content="blue" />
+
+          </Head>
           <body>
             <Main />
             <NextScript />
