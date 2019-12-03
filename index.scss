@@ -75,13 +75,10 @@ input[type="submit"] {
   }
 }
 b {
-  color: rgb(61, 95, 189);
+  color: rgb(17, 43, 17);
 }
-h2{
+h2 {
   text-align: center;
-}
-i {
-  font-size: 1.4rem;
 }
 .error {
   background-color: rgb(236, 164, 164);
@@ -103,7 +100,7 @@ label {
   display: flex;
   flex-direction: column;
   position: relative;
-  .polls__li__div{
+  .polls__li__div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -152,13 +149,13 @@ label {
   .form {
     flex: 1 200px;
     margin-top: 10px;
-    .details{
+    .details {
       margin-top: 10px;
       background-color: rgba(253, 247, 186, 0.692);
       border: 1px solid rgba(0, 0, 0, 0.116);
       border-radius: 0.5rem;
       flex: 1;
-      .details__div{
+      .details__div {
         display: flex;
         justify-content: center;
       }
@@ -179,7 +176,7 @@ label {
         margin: 0.2rem;
         font-size: 1rem;
         font-weight: bold;
-        &:hover{
+        &:hover {
           color: rgb(177, 177, 177);
         }
       }
@@ -196,40 +193,40 @@ label {
           }
         }
       }
-      .form__div__choice{
+      .form__div__choice {
         padding-top: 16px;
       }
-      .form__div{
+      .form__div {
         width: 90%;
         margin: auto;
-        li{
+        li {
           padding: 0 10px;
         }
-        .choiceList__div{
+        .choiceList__div {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          button{
+          button {
             background-color: $d-button;
-            &:hover{
+            &:hover {
               background-color: $d-button-h;
             }
           }
         }
-        .formChoises{
+        .formChoises {
           display: flex;
-          input[type="submit"]{
+          input[type="submit"] {
             border-radius: 50%;
             padding: 2px 8px;
             margin-top: 20px;
-            &:disabled{
+            &:disabled {
               background-color: lightgray;
             }
           }
         }
       }
-      .form__submit{
-        position:absolute;
+      .form__submit {
+        position: absolute;
         bottom: 0;
       }
     }
@@ -241,10 +238,10 @@ label {
     .question__list__list {
       display: flex;
       flex-wrap: wrap;
-      ul{
+      ul {
         flex: 3 300px;
       }
-      .details__{
+      .details__ {
         flex: 1 200px;
         height: 150px;
         background-color: rgba(255, 255, 224, 0.432);
@@ -252,9 +249,9 @@ label {
         margin-right: 10px;
         border: 1px solid rgba(0, 0, 0, 0.116);
         border-radius: 0.5rem;
-        .details__div{
+        .details__div {
           margin: 1rem;
-          h3{
+          h3 {
             border-bottom: 1px solid gray;
           }
         }
@@ -273,7 +270,7 @@ input[type="text"] {
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .response__div {
@@ -283,59 +280,94 @@ input[type="text"] {
     margin: auto;
   }
 }
-.delete{
+.delete {
   border-radius: 5px;
   background-color: $d-button;
-  &:hover{
+  &:hover {
     background-color: $d-button-h;
   }
 }
-.total__votes{
+.total__votes {
   padding-left: 1rem;
   margin-top: 0rem;
 }
-.formChoises{
+.formChoises {
   display: flex;
   margin: auto;
-  input[type="submit"]{
+  input[type="submit"] {
     border-radius: 50%;
     padding: 2px 8px;
     margin-top: 20px;
-    &:disabled{
+    &:disabled {
       background-color: lightgray;
     }
   }
 }
-.response{
-  // display: flex;
+.response {
   margin: auto;
-  .choice__div{
+  .choice__div {
     display: flex;
     justify-content: center;
-    button{
+    button {
       border-radius: 0.5rem;
       background-color: rgb(53, 143, 53);
-      &:hover{
+      &:hover {
         color: rgb(209, 250, 199);
         background-color: rgb(45, 170, 29);
       }
     }
   }
 }
-.no__choice{
+.no__choice {
   display: flex;
   flex-direction: column;
-  .no__choice__div{
+  .no__choice__div {
     display: flex;
     margin: auto;
-  } 
+  }
 }
-.choice__div__button{
+.choice__div__button {
   border-radius: 5px;
   background-color: $d-button !important;
   margin: 20px;
-  &:hover{
+  &:hover {
     background-color: $d-button-h !important;
   }
 }
-/////////////////////////////////////* INPUT STYLING */
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  div{
+    margin: auto;
+    // flex: 1;
+    // min-width: 400px;
+  }
+  .displayresult__ {
+    margin: 0;
+    li {
+      margin: 0.2rem;
+      padding: 0 1rem;
+      p {
+        padding: 0rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .result {
+    div{
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+  .question__list {
+    width: 100% !important;
+    .question__list__div {
+      margin-left: 30px;
+    }
+  }
+  .details__ {
+    margin-right: 0 !important;
+  }
+}

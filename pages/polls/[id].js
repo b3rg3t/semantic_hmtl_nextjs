@@ -167,7 +167,6 @@ const Choice = ({ poll, id }) => {
                             handleChange={handleChange}
                             vote={vote}
                           />
-                          {/* <BadData handleChange={handleChange} vote={vote} /> */}
                         </ul>
                         <div className="response__div">
                           <input
