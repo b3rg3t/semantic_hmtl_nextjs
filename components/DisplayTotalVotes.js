@@ -1,7 +1,7 @@
 export default ({ questions }) => (
   <>
-    <p>
-      Total votes:{"  "}
+    <p className="total__votes">
+      Votes:{"  "}
       {questions.choices.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.votes;
       }, 0)}

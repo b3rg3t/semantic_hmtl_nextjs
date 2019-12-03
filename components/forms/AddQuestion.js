@@ -50,14 +50,14 @@ const FormQuestion = props => {
               name="question"
               onChange={event => setQuestion(event.target.value)}
               value={question}
-              placeholder="Text"
+              placeholder="Best animal.."
               required
             />
           </label>
           <input type="submit" value="Submit" className="form__submit" />
         </form>
       </div>
-      <div className="form__div">
+      <div className="form__div form__div__choice">
         <AddChoices
           handleChoiceSubmit={props.handleChoiceSubmit}
           setChoice={props.setChoice}
@@ -91,7 +91,7 @@ export const AddChoices = props => {
           type="text"
           value={props.choice}
           onChange={event => props.setChoice(event.target.value)}
-          placeholder="Text"
+          placeholder="Cat.."
         />
       </label>
       <input type="submit" value="+" disabled={props.choice.length === 0} />

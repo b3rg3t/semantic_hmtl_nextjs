@@ -11,7 +11,7 @@ class MyDocument extends Document {
       return (
         <html lang="sv">
           <Head>
-          <meta name="theme-color" content="blue" />
+          <meta name="theme-color" content="#2859a3"/>
 
           </Head>
           <body>

@@ -1,18 +1,17 @@
 import Link from "next/link";
+import DisplayTotalVotes from "./DisplayTotalVotes";
 const axios = require("axios");
 
 export default props => {
   const deleteQuestion = async event => {
     let id = parseInt(event.target.parentNode.parentNode.id);
-    // console.log(id);
     let message;
     const res = await axios.delete(
       `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
     );
     message = await res;
-    console.log(message);
+    // console.log(message);
     if (message.status === 204) {
-      // console.log("deleted item");
       props.updateListCallback(true);
     }
   };
@@ -28,12 +27,12 @@ export default props => {
               </a>
             </Link>
             <button className="delete" onClick={deleteQuestion}>
-              Delete
+              X
             </button>
           </div>
           <div>
-            
             <p className="polls__li__choice">Choices: {poll.choices.length}</p>
+            <DisplayTotalVotes questions={poll}/>
           </div>
           <div>
             <p className="polls__li__date">

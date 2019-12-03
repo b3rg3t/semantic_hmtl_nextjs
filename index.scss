@@ -1,8 +1,16 @@
 // Colors
 $primary-background: #2859a3;
+$secondary-backgorund: rgb(253, 253, 253);
+$third-background: #f8f8f8;
 
 //Text-colors
 $primary-text: white;
+
+//Button colors
+$d-button: rgb(221, 52, 52);
+$d-button-h: rgb(247, 112, 112);
+$p-button: #0f83f7;
+$p-button-h: #55a6f8;
 
 :root {
   font-size: 16px;
@@ -28,10 +36,9 @@ li {
   list-style: none;
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.116);
-
   margin: 10px;
   padding: 20px;
-  background-color: rgb(238, 246, 252);
+  background-color: $secondary-backgorund;
 }
 a {
   font-size: 1.4rem;
@@ -41,20 +48,20 @@ a {
 }
 button {
   color: white;
-  background-color: #0f83f7;
+  background-color: $p-button;
   border-radius: 50%;
   font-size: 1.4rem;
   border: none;
   cursor: pointer;
   margin: 10px;
   &:hover {
-    background-color: #55a6f8;
+    background-color: $p-button-h;
     color: rgb(241, 238, 238);
   }
 }
 input[type="submit"] {
   color: white;
-  background-color: #0f83f7;
+  background-color: $p-button;
   border-radius: 5px;
   font-size: 1.4rem;
   border: none;
@@ -63,7 +70,7 @@ input[type="submit"] {
   margin: 10px;
   border: 1px solid rgba(0, 0, 0, 0.116);
   &:hover {
-    background-color: #55a6f8;
+    background-color: $p-button-h;
     color: rgb(241, 238, 238);
   }
 }
@@ -100,7 +107,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid #2859a3ad;
   }
   .polls__li__poll {
     text-decoration: none;
@@ -112,6 +119,7 @@ label {
   }
   .polls__li__choice {
     margin-left: 1rem;
+    margin-bottom: 0.4rem;
   }
   .polls__li__date {
     margin: 0;
@@ -124,7 +132,7 @@ label {
 .back__button {
   color: white;
   width: 100px;
-  background-color: #0f83f7;
+  background-color: $p-button;
   border-radius: 5px;
   font-size: 1.4rem;
   border: none;
@@ -134,7 +142,7 @@ label {
   text-decoration: none;
   margin: auto;
   &:hover {
-    background-color: #55a6f8;
+    background-color: $p-button-h;
     color: rgb(241, 238, 238);
   }
 }
@@ -146,7 +154,7 @@ label {
     margin-top: 10px;
     .details{
       margin-top: 10px;
-      background-color: rgb(253, 247, 186);
+      background-color: rgba(253, 247, 186, 0.692);
       border: 1px solid rgba(0, 0, 0, 0.116);
       border-radius: 0.5rem;
       flex: 1;
@@ -156,10 +164,10 @@ label {
       }
     }
     .form__ {
-      background-color: rgb(240, 239, 255);
+      background-color: $third-background;
       border: 1px solid rgba(0, 0, 0, 0.116);
       border-radius: 0.5rem;
-      flex: 1;
+      flex: 1 400px;
       position: relative;
       padding-bottom: 60px;
       .form__button {
@@ -188,6 +196,9 @@ label {
           }
         }
       }
+      .form__div__choice{
+        padding-top: 16px;
+      }
       .form__div{
         width: 90%;
         margin: auto;
@@ -199,9 +210,9 @@ label {
           align-items: center;
           justify-content: space-between;
           button{
-            background-color: red;
+            background-color: $d-button;
             &:hover{
-              background-color: rgb(247, 112, 112);
+              background-color: $d-button-h;
             }
           }
         }
@@ -225,16 +236,29 @@ label {
   }
 
   .question__list {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
     width: 80%;
     margin: auto;
-    .question__list__div {
-      flex: 1 200px;
-    }
     .question__list__list {
-      flex: 2 200px;
+      display: flex;
+      flex-wrap: wrap;
+      ul{
+        flex: 3 300px;
+      }
+      .details__{
+        flex: 1 200px;
+        height: 150px;
+        background-color: rgba(255, 255, 224, 0.432);
+        margin-top: 10px;
+        margin-right: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.116);
+        border-radius: 0.5rem;
+        .details__div{
+          margin: 1rem;
+          h3{
+            border-bottom: 1px solid gray;
+          }
+        }
+      }
     }
   }
 }
@@ -249,6 +273,7 @@ input[type="text"] {
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
+  font-size: 1.6rem;
 }
 
 .response__div {
@@ -260,9 +285,57 @@ input[type="text"] {
 }
 .delete{
   border-radius: 5px;
-  background-color: red;
+  background-color: $d-button;
   &:hover{
-    background-color: rgb(247, 112, 112);
+    background-color: $d-button-h;
+  }
+}
+.total__votes{
+  padding-left: 1rem;
+  margin-top: 0rem;
+}
+.formChoises{
+  display: flex;
+  margin: auto;
+  input[type="submit"]{
+    border-radius: 50%;
+    padding: 2px 8px;
+    margin-top: 20px;
+    &:disabled{
+      background-color: lightgray;
+    }
+  }
+}
+.response{
+  // display: flex;
+  margin: auto;
+  .choice__div{
+    display: flex;
+    justify-content: center;
+    button{
+      border-radius: 0.5rem;
+      background-color: rgb(53, 143, 53);
+      &:hover{
+        color: rgb(209, 250, 199);
+        background-color: rgb(45, 170, 29);
+      }
+    }
+  }
+}
+.no__choice{
+  display: flex;
+  flex-direction: column;
+  .no__choice__div{
+    display: flex;
+    margin: auto;
+  } 
+}
+.choice__div__button{
+  border-radius: 5px;
+  background-color: $d-button !important;
+  margin: 20px;
+  &:hover{
+    background-color: $d-button-h !important;
   }
 }
 /////////////////////////////////////* INPUT STYLING */

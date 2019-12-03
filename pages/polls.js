@@ -4,11 +4,12 @@ import AddQuestion from "../components/forms/AddQuestion";
 import { useState, useEffect } from "react";
 import PollsList from "../components/PollsList";
 import { withRouter } from "next/router";
+import DetailsPolls from "../components/DetailsPolls";
 
 const axios = require("axios");
 
 const Polls = props => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [updateList, setUpdateList] = useState(false);
   const [choiceList, setChoiceList] = useState([]);
@@ -68,9 +69,9 @@ const Polls = props => {
       <main>
         <section className="polls">
           {questions ? (
-            <article className="question__list">
+            <section className="question__list">
               {showForm ? (
-                <div className="form">
+                <article className="form">
                   <AddQuestion
                     onSubmitCallback={UpdateQuestions}
                     onButtonCloseCallback={ShowForms}
@@ -82,7 +83,7 @@ const Polls = props => {
                     choiceList={choiceList}
                     updateChoiceList={updateChoiceList}
                   />
-                </div>
+                </article>
               ) : (
                 <article className="question__list__div">
                   <span>Add question:</span>
@@ -98,8 +99,9 @@ const Polls = props => {
                     updateListCallback={UpdateTheList}
                   />
                 </ul>
+                <DetailsPolls questions={questions} />
               </section>
-            </article>
+            </section>
           ) : (
             <h2>Something went wrong, try again later!</h2>
           )}

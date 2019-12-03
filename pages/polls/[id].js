@@ -18,13 +18,14 @@ const Choice = ({ poll, id }) => {
   const [questions, setQuestions] = useState("");
   const [runEffect, setRunEffect] = useState(false);
   const [voteVoted, setVoteVoted] = useState("");
-  const [choiceList, setChoiceList] = useState([]);
   const [choice, setChoice] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     console.log("first useeffect");
     setQuestions(poll);
   }, []);
+
   useEffect(() => {
     const fetch = async function fetchData() {
       let polls;
@@ -46,10 +47,12 @@ const Choice = ({ poll, id }) => {
     }
   }, [runEffect]);
 
+  const ShowForms = form => {
+    showForm ? setShowForm(false) : setShowForm(form);
+  };
   const onSubmit = async event => {
     event.preventDefault();
     let resStatus;
-    // let postRes;
     try {
       const postChoice = await axios.post(
         "http://yoshi.willandskill.eu:8666/polls/questions/" +
@@ -73,14 +76,17 @@ const Choice = ({ poll, id }) => {
       setStatus(error.response.status);
     }
   };
+
   const handleChange = event => {
     setVote(parseInt(event.target.value));
   };
+
   const FilterChoice = () => {
     let filteredChoice = poll.choices.filter(a => vote == a.id);
     console.log(filteredChoice.map(c => c.choice_text));
     setVoteVoted(filteredChoice.map(c => c.choice_text));
   };
+
   const submitChoice = async event => {
     event.preventDefault();
     let choices;
@@ -89,9 +95,12 @@ const Choice = ({ poll, id }) => {
         `http://yoshi.willandskill.eu:8666/polls/questions/${id}/choices/`,
         { choice_text: choice }
       );
-      choices = await choiceResponse.data;
-      console.log(choices);
-      setChoice("")
+      choices = await choiceResponse.status;
+      if (choices === 201) {
+        console.log(choices);
+        setChoice("");
+        setRunEffect(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -109,13 +118,15 @@ const Choice = ({ poll, id }) => {
           {questions ? (
             <div>
               {questions.choices.length === 0 ? (
-                <div>
+                <div className="no__choice">
                   <h2>{`There is no choises to "${questions.question_text}"`}</h2>
-                  <AddChoices
-                    setChoice={setChoice}
-                    choice={choice}
-                    handleChoiceSubmit={submitChoice}
-                  />
+                  <div className="choice__div no__choice__div">
+                    <AddChoices
+                      setChoice={setChoice}
+                      choice={choice}
+                      handleChoiceSubmit={submitChoice}
+                    />
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -130,11 +141,25 @@ const Choice = ({ poll, id }) => {
                   ) : (
                     <div className="response">
                       <h2>{questions.question_text}</h2>
-                      <AddChoices
-                        setChoice={setChoice}
-                        choice={choice}
-                        handleChoiceSubmit={submitChoice}
-                      />
+                      {showForm ? (
+                        <div className="choice__div">
+                          <AddChoices
+                            setChoice={setChoice}
+                            choice={choice}
+                            handleChoiceSubmit={submitChoice}
+                          />
+                          <button
+                            className="choice__div__button"
+                            onClick={ShowForms}
+                          >
+                            X
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="choice__div">
+                          <button onClick={ShowForms}>+</button>
+                        </div>
+                      )}
                       <form onSubmit={onSubmit} method="post">
                         <ul>
                           <ChoiceForm
@@ -142,7 +167,7 @@ const Choice = ({ poll, id }) => {
                             handleChange={handleChange}
                             vote={vote}
                           />
-                          <BadData handleChange={handleChange} vote={vote} />
+                          {/* <BadData handleChange={handleChange} vote={vote} /> */}
                         </ul>
                         <div className="response__div">
                           <input
