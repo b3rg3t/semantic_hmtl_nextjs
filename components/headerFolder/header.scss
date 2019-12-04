@@ -32,3 +32,24 @@ header{
     }
 
 }
+
+@media screen and (max-width: 600px) {
+
+    header{
+        h1{
+            display: none;
+        }
+        .header__ul{
+            justify-content: center;
+            margin: 0;
+            .header__li{
+                list-style: none;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+        }
+    
+    }
+  }
+  

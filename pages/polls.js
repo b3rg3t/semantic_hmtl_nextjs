@@ -118,7 +118,6 @@ Polls.getInitialProps = async () => {
       "http://yoshi.willandskill.eu:8666/polls/questions/"
     );
     polls = await res.data;
-    console.log(polls);
   } catch (error) {
     console.log("this is the error: " + error);
   }

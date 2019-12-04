@@ -5,14 +5,18 @@ const axios = require("axios");
 export default props => {
   const deleteQuestion = async event => {
     let id = parseInt(event.target.parentNode.parentNode.id);
+    let name = event.target.parentNode.firstChild.text;
     let message;
-    const res = await axios.delete(
-      `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
-    );
-    message = await res;
-    // console.log(message);
-    if (message.status === 204) {
-      props.updateListCallback(true);
+    let ok = confirm(`Are you sure you want to delete question ${name}`)
+    if(ok){
+      const res = await axios.delete(
+        `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
+      );
+      message = await res;
+      // console.log(message);
+      if (message.status === 204) {
+        props.updateListCallback(true);
+      }
     }
   };
   ///

@@ -22,7 +22,7 @@ $p-button-h: #55a6f8;
 body {
   margin: 0;
   padding: 0;
-  // color: white;
+  color: #17325a;
 }
 
 main {
@@ -306,10 +306,13 @@ input[type="text"] {
 .response {
   margin: auto;
   .choice__div {
+    height: 67.6px;
     display: flex;
     justify-content: center;
+    align-items: center;
     button {
       border-radius: 0.5rem;
+      height: 26px;
       background-color: rgb(53, 143, 53);
       &:hover {
         color: rgb(209, 250, 199);

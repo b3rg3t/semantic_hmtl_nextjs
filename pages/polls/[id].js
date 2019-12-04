@@ -3,7 +3,7 @@ import Layout from "../../components/layoutFolder/Layout";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import Head from "next/head";
-import BadData from "../../components/BadData";
+// import BadData from "../../components/BadData";
 import ChoiceForm from "../../components/forms/ChoiceForm";
 import DisplayTotalVotes from "../../components/DisplayTotalVotes";
 import DisplayResults from "../../components/DisplayResults";
@@ -22,14 +22,12 @@ const Choice = ({ poll, id }) => {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    console.log("first useeffect");
     setQuestions(poll);
   }, []);
 
   useEffect(() => {
     const fetch = async function fetchData() {
       let polls;
-      console.log("second useEffect");
       try {
         const response = await axios.get(
           `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
@@ -61,7 +59,6 @@ const Choice = ({ poll, id }) => {
         { choice: vote }
       );
       resStatus = await postChoice.status;
-      // postRes = await postChoice.data.choices;
       if (resStatus === 200) {
         setShowRes(true);
         setStatus(resStatus);
@@ -83,7 +80,6 @@ const Choice = ({ poll, id }) => {
 
   const FilterChoice = () => {
     let filteredChoice = poll.choices.filter(a => vote == a.id);
-    console.log(filteredChoice.map(c => c.choice_text));
     setVoteVoted(filteredChoice.map(c => c.choice_text));
   };
 
@@ -97,7 +93,6 @@ const Choice = ({ poll, id }) => {
       );
       choices = await choiceResponse.status;
       if (choices === 201) {
-        console.log(choices);
         setChoice("");
         setRunEffect(true);
       }
@@ -136,7 +131,7 @@ const Choice = ({ poll, id }) => {
                   {status === 200 ? (
                     <h3 className="ok">
                       Vote for <b className="voted">{voteVoted[0]}</b> was
-                      submitted{` with status: ${status} = OK`}
+                      submitted to question {questions.question_text}{` with status: ${status} = OK`}
                     </h3>
                   ) : (
                     <div className="response">
@@ -198,7 +193,6 @@ const Choice = ({ poll, id }) => {
 
 Choice.getInitialProps = async context => {
   const { id } = context.query;
-  console.log(id);
   let poll;
   try {
     const response = await axios.get(
