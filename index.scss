@@ -3,6 +3,9 @@ $primary-background: #2859a3;
 $secondary-backgorund: rgb(253, 253, 253);
 $third-background: #f8f8f8;
 
+//Special color:
+$error: rgb(236, 164, 164);
+
 //Text-colors
 $primary-text: white;
 
@@ -75,6 +78,29 @@ label {
   &:hover {
     cursor: pointer;
     color: gray;
+  }
+}
+header {
+  .header__div {
+    display: flex;
+    justify-content: space-between;
+    .login-logout {
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      background-color: $p-button;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: $p-button-h;
+      }
+    }
   }
 }
 .polls__li {
@@ -365,8 +391,9 @@ label {
     }
   }
 }
-
-//CHART AND TOTAL VOTES
+//////////////////////////////////////////////////////////
+////////////// CHART AND TOTAL VOTES /////////////////////
+//////////////////////////////////////////////////////////
 .result {
   display: flex;
   flex-wrap: wrap;
@@ -384,10 +411,15 @@ label {
     }
   }
 }
-// LOGIN AND REGISTER FORM
+///////////////////////////////////////////////////////////////
+/////////////// LOGIN AND REGISTER FORM ///////////////////////
+///////////////////////////////////////////////////////////////
 .loginform {
   width: 60%;
   margin: auto;
+  padding: 2rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.116);
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -398,6 +430,14 @@ label {
     margin-bottom: 0.5rem;
     input {
       margin: auto;
+      border-radius: 30px;
+      padding: 4px 0 4px 6px;
+      border: 1px solid rgba(0, 0, 0, 0.116);
+      &:focus {
+        outline: none;
+        border: 1px solid $p-button-h;
+        border-radius: 30px;
+      }
     }
   }
   button {
@@ -413,6 +453,19 @@ label {
     &:hover {
       background-color: $p-button-h;
       color: rgb(241, 238, 238);
+    }
+    &:disabled {
+      background-color: lightgray;
+      cursor: not-allowed;
+    }
+  }
+  .loginform__error {
+    background-color: $error;
+    border-radius: 0.5rem;
+    p {
+      font-size: 0.7rem;
+      padding: 5px 10px;
+      margin: 0;
     }
   }
 }

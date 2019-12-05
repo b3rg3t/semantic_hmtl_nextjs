@@ -6,6 +6,7 @@ import PollsList from "../components/PollsList";
 import { withRouter } from "next/router";
 import DetailsPolls from "../components/DetailsPolls";
 import { BASE_URL } from "../paths/url";
+import cookies from 'next-cookies'
 
 const axios = require("axios");
 
@@ -61,7 +62,7 @@ const Polls = props => {
     setChoiceList(newChoiceList);
   };
   return (
-    <Layout title="Polls">
+    <Layout title="Polls" token={props.token}>
       <Head>
         <title>Polls</title>
       </Head>
@@ -110,8 +111,10 @@ const Polls = props => {
   );
 };
 
-Polls.getInitialProps = async () => {
+Polls.getInitialProps = async (ctx) => {
   let polls;
+  const allCookies = cookies(ctx);
+  // console.log(allCookies)
   try {
     const res = await axios.get(`${BASE_URL}polls/questions/`);
     polls = await res.data;

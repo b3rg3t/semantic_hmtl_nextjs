@@ -11,6 +11,7 @@ const RegisterForm = () => {
     event.preventDefault();
     Register(username, password, email);
   };
+  const isDisabled = password.length && password2.length && email.length && username.length > 0;
   const isInvalid = password !== password2;
   return (
     <>
@@ -22,6 +23,7 @@ const RegisterForm = () => {
             onChange={event => setUsername(event.target.value)}
             value={username}
             placeholder="Username"
+            required
           />
         </label>
         <label>
@@ -31,6 +33,7 @@ const RegisterForm = () => {
             onChange={event => setEmail(event.target.value)}
             value={email}
             placeholder="Email"
+            required
           />
         </label>
         <label>
@@ -40,6 +43,7 @@ const RegisterForm = () => {
             onChange={event => setPassword(event.target.value)}
             value={password}
             placeholder="Password"
+            required
           />
         </label>
         <label>
@@ -49,9 +53,10 @@ const RegisterForm = () => {
             onChange={event => setPassword2(event.target.value)}
             value={password2}
             placeholder="Password"
+            required
           />
         </label>
-        {isInvalid && password2.length > 0 ? "Passwords is not matching" : null}
+        {isInvalid && password2.length > 0 ? <div className="loginform__error"><p>Passwords is not matching</p></div> : null}
         <span>
           Already a user,{" "}
           <Link href="/login">
@@ -59,7 +64,7 @@ const RegisterForm = () => {
           </Link>
         </span>
         <div className="errorDiv"></div>
-        <button>Register</button>
+        <button disabled={!isDisabled}>Register</button>
       </form>
     </>
   );

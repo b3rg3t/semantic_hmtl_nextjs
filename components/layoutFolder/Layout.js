@@ -4,7 +4,7 @@ import "../layoutFolder/layout.scss";
 import Headtags from "../Headtags";
 import Head from "next/head";
 
-const Layout = ({ children, title }) => (
+const Layout = ({ children, title, token }) => (
   <div className="wrapper">
     <Head>
       <link
@@ -13,7 +13,7 @@ const Layout = ({ children, title }) => (
       />
     </Head>
     <Headtags />
-    <Header />
+    <Header token={token}/>
     <h1>{title}</h1>
     {children}
     <Footer />

@@ -1,9 +1,9 @@
 import Layout from "../components/layoutFolder/Layout";
 import Head from "next/head";
 
-export default function Index() {
+const Index = (props) => {
   return (
-    <Layout title="Home Page">
+    <Layout title="Home Page" token={props.token}>
       <Head>
         <title>Cat</title>
       </Head>
@@ -25,3 +25,7 @@ export default function Index() {
     </Layout>
   );
 }
+
+
+
+export default Index;

@@ -12,7 +12,7 @@ import { BASE_URL } from "../../paths/url";
 
 const axios = require("axios");
 
-const Choice = ({ poll, id }) => {
+const Choice = ({ poll, id, token }) => {
   const [vote, setVote] = useState(0);
   const [showRes, setShowRes] = useState(false);
   const [status, setStatus] = useState("");
@@ -98,7 +98,7 @@ const Choice = ({ poll, id }) => {
     }
   };
   return (
-    <Layout>
+    <Layout token={token}>
       <Head>
         <title>Poll {questions.id}</title>
       </Head>

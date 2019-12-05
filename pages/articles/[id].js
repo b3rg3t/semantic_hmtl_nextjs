@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Post = () => {
   const router = useRouter();
 
-  const FilterCats = () => {
+  const FilterCats = (props) => {
     let cat = cats.filter(c => c.title === router.query.id);
     console.log(cat);
     return (
@@ -21,7 +21,7 @@ const Post = () => {
     );
   };
   return (
-    <Layout>
+    <Layout token={props.token}>
       <Link href="/articles">
         <a>{`<< Back`}</a>
       </Link>
