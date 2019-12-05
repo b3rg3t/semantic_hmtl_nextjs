@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {BASE_URL} from "../../paths/url"
 
 const axios = require("axios");
 
@@ -16,7 +17,7 @@ const FormQuestion = props => {
     let resData;
     try {
       const postChoice = await axios.post(
-        "http://yoshi.willandskill.eu:8666/polls/questions/",
+        `${BASE_URL}polls/questions/`,
         { question_text: question, pub_date: date, choices: props.choiceList }
       );
       resStatus = await postChoice.status;

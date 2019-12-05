@@ -8,6 +8,7 @@ import ChoiceForm from "../../components/forms/ChoiceForm";
 import DisplayTotalVotes from "../../components/DisplayTotalVotes";
 import DisplayResults from "../../components/DisplayResults";
 import { AddChoices } from "../../components/forms/AddQuestion";
+import { BASE_URL } from "../../paths/url";
 
 const axios = require("axios");
 
@@ -29,9 +30,7 @@ const Choice = ({ poll, id }) => {
     const fetch = async function fetchData() {
       let polls;
       try {
-        const response = await axios.get(
-          `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
-        );
+        const response = await axios.get(`${BASE_URL}polls/questions/${id}/`);
         polls = await response.data;
         return setQuestions(polls);
       } catch (error) {
@@ -53,9 +52,7 @@ const Choice = ({ poll, id }) => {
     let resStatus;
     try {
       const postChoice = await axios.post(
-        "http://yoshi.willandskill.eu:8666/polls/questions/" +
-          poll.id +
-          "/vote/",
+        `${BASE_URL}polls/questions/${poll.id}/vote/`,
         { choice: vote }
       );
       resStatus = await postChoice.status;
@@ -88,7 +85,7 @@ const Choice = ({ poll, id }) => {
     let choices;
     try {
       const choiceResponse = await axios.post(
-        `http://yoshi.willandskill.eu:8666/polls/questions/${id}/choices/`,
+        `${BASE_URL}polls/questions/${id}/choices/`,
         { choice_text: choice }
       );
       choices = await choiceResponse.status;
@@ -131,7 +128,8 @@ const Choice = ({ poll, id }) => {
                   {status === 200 ? (
                     <h3 className="ok">
                       Vote for <b className="voted">{voteVoted[0]}</b> was
-                      submitted to question {questions.question_text}{` with status: ${status} = OK`}
+                      submitted to question {questions.question_text}
+                      {` with status: ${status} = OK`}
                     </h3>
                   ) : (
                     <div className="response">
@@ -195,9 +193,7 @@ Choice.getInitialProps = async context => {
   const { id } = context.query;
   let poll;
   try {
-    const response = await axios.get(
-      `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
-    );
+    const response = await axios.get(`${BASE_URL}polls/questions/${id}/`);
     poll = await response.data;
   } catch (error) {
     console.log(error);

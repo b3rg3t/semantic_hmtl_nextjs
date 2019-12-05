@@ -19,6 +19,7 @@ export default function Index() {
           doloremque animi asperiores sit error vitae, similique quaerat
           nesciunt assumenda architecto dignissimos molestias praesentium magni
           delectus! Tempora unde qui nesciunt?
+          &#128077;
         </div>
       </main>
     </Layout>

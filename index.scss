@@ -40,25 +40,6 @@ li {
   padding: 20px;
   background-color: $secondary-backgorund;
 }
-a {
-  font-size: 1.4rem;
-  &:hover {
-    color: rgb(228, 108, 108);
-  }
-}
-button {
-  color: white;
-  background-color: $p-button;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
-  &:hover {
-    background-color: $p-button-h;
-    color: rgb(241, 238, 238);
-  }
-}
 input[type="submit"] {
   color: white;
   background-color: $p-button;
@@ -126,24 +107,6 @@ label {
   }
 }
 
-.back__button {
-  color: white;
-  width: 100px;
-  background-color: $p-button;
-  border-radius: 5px;
-  font-size: 1.4rem;
-  border: none;
-  padding: 7px 14px;
-  cursor: pointer;
-  margin: 10px;
-  text-decoration: none;
-  margin: auto;
-  &:hover {
-    background-color: $p-button-h;
-    color: rgb(241, 238, 238);
-  }
-}
-
 .polls {
   margin: auto;
   .form {
@@ -167,6 +130,12 @@ label {
       flex: 1 400px;
       position: relative;
       padding-bottom: 60px;
+      input[type="text"] {
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        width: 100%;
+        font-size: 1.2rem;
+      }
       .form__button {
         position: absolute;
         right: 0;
@@ -176,6 +145,8 @@ label {
         margin: 0.2rem;
         font-size: 1rem;
         font-weight: bold;
+        border: none;
+        cursor: pointer;
         &:hover {
           color: rgb(177, 177, 177);
         }
@@ -208,6 +179,12 @@ label {
           justify-content: space-between;
           button {
             background-color: $d-button;
+            border: none;
+            margin: 0.6rem;
+            cursor: pointer;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 8px;
             &:hover {
               background-color: $d-button-h;
             }
@@ -232,9 +209,25 @@ label {
     }
   }
 
+  //////////  LIST OF ALL QUESTIONS  ///////////////////
   .question__list {
     width: 80%;
     margin: auto;
+    .question__list__div {
+      button {
+        color: white;
+        background-color: $p-button;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        &:hover {
+          background-color: $p-button-h;
+          color: rgb(241, 238, 238);
+        }
+      }
+    }
     .question__list__list {
       display: flex;
       flex-wrap: wrap;
@@ -259,18 +252,45 @@ label {
     }
   }
 }
+////////////////////////////////////////////////////////////////////////////////
 
+////////////// CHOICES LIST ///////////////////////////////////////////////////
 .polls__id {
   width: 60%;
   margin: auto;
   display: flex;
   flex-direction: column;
-}
-input[type="text"] {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  font-size: 1.2rem;
+  .back__button {
+    color: white;
+    width: 100px;
+    background-color: $p-button;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    border: none;
+    padding: 7px 14px;
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+    margin: auto;
+    &:hover {
+      background-color: $p-button-h;
+      color: rgb(241, 238, 238);
+    }
+  }
+  .no__choice {
+    display: flex;
+    flex-direction: column;
+    .no__choice__div {
+      display: flex;
+      margin: auto;
+      input[type="text"] {
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        width: 100%;
+        font-size: 1.2rem;
+      }
+    }
+  }
 }
 
 .response__div {
@@ -282,6 +302,11 @@ input[type="text"] {
 }
 .delete {
   border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 5px 7px;
+  margin: 5px 0;
+  cursor: pointer;
   background-color: $d-button;
   &:hover {
     background-color: $d-button-h;
@@ -310,10 +335,29 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
+    input[type="text"] {
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      width: 100%;
+      font-size: 1.2rem;
+    }
+    .choice__div__button {
+      border-radius: 5px;
+      background-color: $d-button !important;
+      margin: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: $d-button-h !important;
+      }
+    }
     button {
       border-radius: 0.5rem;
       height: 26px;
+      border: none;
+      color: white;
+      font-size: 1.4rem;
       background-color: rgb(53, 143, 53);
+      cursor: pointer;
       &:hover {
         color: rgb(209, 250, 199);
         background-color: rgb(45, 170, 29);
@@ -321,29 +365,13 @@ input[type="text"] {
     }
   }
 }
-.no__choice {
-  display: flex;
-  flex-direction: column;
-  .no__choice__div {
-    display: flex;
-    margin: auto;
-  }
-}
-.choice__div__button {
-  border-radius: 5px;
-  background-color: $d-button !important;
-  margin: 20px;
-  &:hover {
-    background-color: $d-button-h !important;
-  }
-}
+
+//CHART AND TOTAL VOTES
 .result {
   display: flex;
   flex-wrap: wrap;
-  div{
+  div {
     margin: auto;
-    // flex: 1;
-    // min-width: 400px;
   }
   .displayresult__ {
     margin: 0;
@@ -356,10 +384,43 @@ input[type="text"] {
     }
   }
 }
+// LOGIN AND REGISTER FORM
+.loginform {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    input {
+      margin: auto;
+    }
+  }
+  button {
+    color: white;
+    background-color: $p-button;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    border: none;
+    padding: 7px;
+    cursor: pointer;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    &:hover {
+      background-color: $p-button-h;
+      color: rgb(241, 238, 238);
+    }
+  }
+}
 
+//MEDIA QUERYS
 @media screen and (max-width: 600px) {
   .result {
-    div{
+    div {
       flex: 1;
       min-width: 200px;
     }

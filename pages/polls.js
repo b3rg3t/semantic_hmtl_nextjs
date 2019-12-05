@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import PollsList from "../components/PollsList";
 import { withRouter } from "next/router";
 import DetailsPolls from "../components/DetailsPolls";
+import { BASE_URL } from "../paths/url";
 
 const axios = require("axios");
 
@@ -34,9 +35,7 @@ const Polls = props => {
     const updateView = async () => {
       let updatedData;
       try {
-        const res = await axios.get(
-          "http://yoshi.willandskill.eu:8666/polls/questions/"
-        );
+        const res = await axios.get(`${BASE_URL}polls/questions/`);
         updatedData = await res.data;
         if (updateList) {
           setQuestions(updatedData);
@@ -54,12 +53,12 @@ const Polls = props => {
     setChoiceList(choiceList);
     setChoice("");
   };
-  const updateChoiceList = (index) => {
-    let choiceID = index ;
-    parseInt(choiceID)
-    const newChoiceList = choiceList.slice()
+  const updateChoiceList = index => {
+    let choiceID = index;
+    parseInt(choiceID);
+    const newChoiceList = choiceList.slice();
     newChoiceList.splice(choiceID, 1);
-    setChoiceList(newChoiceList)
+    setChoiceList(newChoiceList);
   };
   return (
     <Layout title="Polls">
@@ -114,9 +113,7 @@ const Polls = props => {
 Polls.getInitialProps = async () => {
   let polls;
   try {
-    const res = await axios.get(
-      "http://yoshi.willandskill.eu:8666/polls/questions/"
-    );
+    const res = await axios.get(`${BASE_URL}polls/questions/`);
     polls = await res.data;
   } catch (error) {
     console.log("this is the error: " + error);

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DisplayTotalVotes from "./DisplayTotalVotes";
+import {BASE_URL} from "../paths/url"
 const axios = require("axios");
 
 export default props => {
@@ -10,7 +11,7 @@ export default props => {
     let ok = confirm(`Are you sure you want to delete question ${name}`)
     if(ok){
       const res = await axios.delete(
-        `http://yoshi.willandskill.eu:8666/polls/questions/${id}/`
+        `${BASE_URL}polls/questions/${id}/`
       );
       message = await res;
       // console.log(message);
