@@ -1,9 +1,9 @@
 import Layout from "../components/layoutFolder/Layout";
 import Head from "next/head";
 import PrintArticle from "../components/articlesFolder/printArt";
+import { withAuthSync } from "../lib/auth";
 
-const Articles = (props) => {
-
+const Articles = props => {
   return (
     <Layout title="Articles" token={props.token}>
       <Head>
@@ -18,5 +18,4 @@ const Articles = (props) => {
   );
 };
 
-
-export default Articles;
+export default withAuthSync(Articles);

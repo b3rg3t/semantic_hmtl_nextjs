@@ -1,6 +1,6 @@
 import Link from "next/link";
 import DisplayTotalVotes from "./DisplayTotalVotes";
-import {BASE_URL} from "../paths/url"
+import { BASE_URL } from "../paths/url";
 const axios = require("axios");
 
 export default props => {
@@ -8,11 +8,15 @@ export default props => {
     let id = parseInt(event.target.parentNode.parentNode.id);
     let name = event.target.parentNode.firstChild.text;
     let message;
-    let ok = confirm(`Are you sure you want to delete question ${name}`)
-    if(ok){
-      const res = await axios.delete(
-        `${BASE_URL}polls/questions/${id}/`
-      );
+    let ok = confirm(`Are you sure you want to delete question ${name}`);
+    const headers = {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${props.token}`
+    };
+    if (ok) {
+      const res = await axios.delete(`${BASE_URL}polls/questions/${id}/`, {
+        headers: headers
+      });
       message = await res;
       // console.log(message);
       if (message.status === 204) {
@@ -37,7 +41,7 @@ export default props => {
           </div>
           <div>
             <p className="polls__li__choice">Choices: {poll.choices.length}</p>
-            <DisplayTotalVotes questions={poll}/>
+            <DisplayTotalVotes questions={poll} />
           </div>
           <div>
             <p className="polls__li__date">

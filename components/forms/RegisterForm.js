@@ -43,6 +43,7 @@ const RegisterForm = () => {
             onChange={event => setPassword(event.target.value)}
             value={password}
             placeholder="Password"
+            minlength="8"
             required
           />
         </label>
@@ -53,6 +54,7 @@ const RegisterForm = () => {
             onChange={event => setPassword2(event.target.value)}
             value={password2}
             placeholder="Password"
+            minlength="8"
             required
           />
         </label>

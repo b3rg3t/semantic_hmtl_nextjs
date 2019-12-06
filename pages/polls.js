@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import PollsList from "../components/PollsList";
 import { withRouter } from "next/router";
 import DetailsPolls from "../components/DetailsPolls";
-import { BASE_URL } from "../paths/url";
-import cookies from 'next-cookies'
+import { BASE_URL } from "../paths/url";// import cookies from 'next-cookies'
+import { withAuthSync, LogOut } from "../lib/auth";
 
 const axios = require("axios");
 
@@ -36,7 +36,9 @@ const Polls = props => {
     const updateView = async () => {
       let updatedData;
       try {
-        const res = await axios.get(`${BASE_URL}polls/questions/`);
+        const res = await axios.get(`${BASE_URL}polls/questions/`, {
+          headers: { Authorization: `Bearer ${props.token}` }
+        });
         updatedData = await res.data;
         if (updateList) {
           setQuestions(updatedData);
@@ -82,6 +84,7 @@ const Polls = props => {
                     emptyChoiceList={setChoiceList}
                     choiceList={choiceList}
                     updateChoiceList={updateChoiceList}
+                    token={props.token}
                   />
                 </article>
               ) : (
@@ -97,6 +100,7 @@ const Polls = props => {
                   <PollsList
                     questions={questions}
                     updateListCallback={UpdateTheList}
+                    token={props.token}
                   />
                 </ul>
                 <DetailsPolls questions={questions} />
@@ -111,16 +115,17 @@ const Polls = props => {
   );
 };
 
-Polls.getInitialProps = async (ctx) => {
+Polls.getInitialProps = async (context, token) => {
   let polls;
-  const allCookies = cookies(ctx);
-  // console.log(allCookies)
   try {
-    const res = await axios.get(`${BASE_URL}polls/questions/`);
+    const res = await axios.get(`${BASE_URL}polls/questions/`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
     polls = await res.data;
   } catch (error) {
     console.log("this is the error: " + error);
+    LogOut(); 
   }
   return { polls: polls };
 };
-export default withRouter(Polls);
+export default withAuthSync(withRouter(Polls));

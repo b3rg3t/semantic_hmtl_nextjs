@@ -1,25 +1,29 @@
 import { useState } from "react";
-import {BASE_URL} from "../../paths/url"
+import { BASE_URL } from "../../paths/url";
 
 const axios = require("axios");
 
 const FormQuestion = props => {
   const [question, setQuestion] = useState("");
 
-  // const handleChange = event => {
-  //   setQuestion(event.target.value);
-  // };
   const onSubmit = async event => {
     event.preventDefault();
-    // console.log("runrunrun");
     let date = new Date();
     let resStatus;
     let resData;
+    const headers = {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${props.token}`
+    };
+    const data = {
+      question_text: question,
+      pub_date: date,
+      choices: props.choiceList
+    };
     try {
-      const postChoice = await axios.post(
-        `${BASE_URL}polls/questions/`,
-        { question_text: question, pub_date: date, choices: props.choiceList }
-      );
+      const postChoice = await axios.post(`${BASE_URL}polls/questions/`, data, {
+        headers: headers
+      });
       resStatus = await postChoice.status;
       resData = await postChoice.data;
       if (resStatus === 201) {
@@ -67,13 +71,15 @@ const FormQuestion = props => {
       </div>
       <div className="form__div">
         {props.choiceList.length > 0 && <h6>Choices:</h6>}
-        <ul >
+        <ul>
           {props.choiceList &&
             props.choiceList.map((choice, index) => (
               <li id={index} key={index}>
                 <div className="choiceList__div">
                   <span>{choice.choice_text}</span>
-                  <button onClick={() => props.updateChoiceList(index)}>X</button>
+                  <button onClick={() => props.updateChoiceList(index)}>
+                    X
+                  </button>
                 </div>
               </li>
             ))}

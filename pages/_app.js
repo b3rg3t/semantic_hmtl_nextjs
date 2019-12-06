@@ -10,10 +10,12 @@ class MyApp extends App {
   //
   static async getInitialProps(appContext) {
     // calls page's `getInitialProps` and fills `appProps.pageProps`
-    const appProps = await App.getInitialProps(appContext);
-    const allCookies = cookies(appProps);
-    console.log(allCookies)
-    return { ...appProps, token: cookies(appContext).token || "" };
+    const token = cookies(appContext.ctx).token || "";
+    const appProps = await App.getInitialProps(appContext,token);
+    // if (appContext.Component.getInitialProps) {
+    //   pageProps = await appContext.Component.getInitialProps(appContext, token);
+    // }
+    return { ...appProps, token: cookies(appContext.ctx).token || ""  };
   }
 
   render() {

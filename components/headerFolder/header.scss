@@ -5,13 +5,25 @@ header{
     color: $primary-text;
     border-bottom:1px solid red;
     width: 100%;
-    h1{
-        margin: 0;
-        padding: 0.5rem;
+    
+    .header__div{
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
+    .header__link{
+        color: white;
+        text-decoration: none;
+        margin: auto 1rem;
+        h1{
+            margin:auto 0;
+            padding: 0.5rem;
+        }
+    }
+
     .header__ul{
         margin: 0;
-        padding: 1rem 0;
+        padding: 0;
         display: flex;
         justify-content: flex-end;
         
@@ -36,8 +48,13 @@ header{
 @media screen and (max-width: 600px) {
 
     header{
-        h1{
-            display: none;
+        .header__link{
+            height: 100%;
+            display: flex;
+            h1{ 
+                font-size: 1rem;
+                margin: auto;
+            }
         }
         .header__ul{
             justify-content: center;
@@ -50,6 +67,9 @@ header{
             }
         }
     
+    }
+    .login-logout{
+        margin: 0 0.5rem !important;
     }
   }
   

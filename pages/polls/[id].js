@@ -9,6 +9,7 @@ import DisplayTotalVotes from "../../components/DisplayTotalVotes";
 import DisplayResults from "../../components/DisplayResults";
 import { AddChoices } from "../../components/forms/AddQuestion";
 import { BASE_URL } from "../../paths/url";
+import { withAuthSync, LogOut } from "../../lib/auth";
 
 const axios = require("axios");
 
@@ -27,17 +28,18 @@ const Choice = ({ poll, id, token }) => {
   }, []);
 
   useEffect(() => {
-    const fetch = async function fetchData() {
+    const fetch = async () => {
       let polls;
       try {
-        const response = await axios.get(`${BASE_URL}polls/questions/${id}/`);
+        const response = await axios.get(`${BASE_URL}polls/questions/${id}/`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         polls = await response.data;
         return setQuestions(polls);
       } catch (error) {
         console.log(error);
       }
     };
-
     if (runEffect) {
       fetch();
       setRunEffect(false);
@@ -50,10 +52,18 @@ const Choice = ({ poll, id, token }) => {
   const onSubmit = async event => {
     event.preventDefault();
     let resStatus;
+    const headers = {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`
+    };
+    const data = { choice: vote };
     try {
       const postChoice = await axios.post(
         `${BASE_URL}polls/questions/${poll.id}/vote/`,
-        { choice: vote }
+        data,
+        {
+          headers: headers
+        }
       );
       resStatus = await postChoice.status;
       if (resStatus === 200) {
@@ -86,7 +96,10 @@ const Choice = ({ poll, id, token }) => {
     try {
       const choiceResponse = await axios.post(
         `${BASE_URL}polls/questions/${id}/choices/`,
-        { choice_text: choice }
+        { choice_text: choice },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
       );
       choices = await choiceResponse.status;
       if (choices === 201) {
@@ -99,106 +112,121 @@ const Choice = ({ poll, id, token }) => {
   };
   return (
     <Layout token={token}>
-      <Head>
-        <title>Poll {questions.id}</title>
-      </Head>
-      <main>
-        <section className="polls__id">
+      {questions ? (
+        <>
+          <Head>
+            <title>Poll {questions.id}</title>
+          </Head>
+          <main>
+            <section className="polls__id">
+              <Link href="/polls">
+                <a className="back__button">{`< Back`}</a>
+              </Link>
+              {questions ? (
+                <div>
+                  {questions.choices.length === 0 ? (
+                    <div className="no__choice">
+                      <h2>{`There is no choises to "${questions.question_text}"`}</h2>
+                      <div className="choice__div no__choice__div">
+                        <AddChoices
+                          setChoice={setChoice}
+                          choice={choice}
+                          handleChoiceSubmit={submitChoice}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      {status > 200 ? (
+                        <h3 className="error">{`Your vote didn't submit!! status: ${status}`}</h3>
+                      ) : null}
+                      {status === 200 ? (
+                        <h3 className="ok">
+                          Vote for <b className="voted">{voteVoted[0]}</b> was
+                          submitted to question {questions.question_text}
+                          {` with status: ${status} = OK`}
+                        </h3>
+                      ) : (
+                        <div className="response">
+                          <h2>{questions.question_text}</h2>
+                          {showForm ? (
+                            <div className="choice__div">
+                              <AddChoices
+                                setChoice={setChoice}
+                                choice={choice}
+                                handleChoiceSubmit={submitChoice}
+                              />
+                              <button
+                                className="choice__div__button"
+                                onClick={ShowForms}
+                              >
+                                X
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="choice__div">
+                              <button onClick={ShowForms}>Add Choice +</button>
+                            </div>
+                          )}
+                          <form onSubmit={onSubmit} method="post">
+                            <ul>
+                              <ChoiceForm
+                                questions={questions}
+                                handleChange={handleChange}
+                                vote={vote}
+                              />
+                            </ul>
+                            <div className="response__div">
+                              <input
+                                className="choice__button"
+                                type="submit"
+                                value="Submit"
+                              />
+                            </div>
+                          </form>
+                        </div>
+                      )}
+                      {showRes ? (
+                        <div>
+                          <DisplayResults questions={questions} />
+                          <DisplayTotalVotes questions={questions} />
+                        </div>
+                      ) : null}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                "Loading..."
+              )}
+            </section>
+          </main>
+        </>
+      ) : (
+        <div>
+          {" "}
           <Link href="/polls">
             <a className="back__button">{`< Back`}</a>
           </Link>
-          {questions ? (
-            <div>
-              {questions.choices.length === 0 ? (
-                <div className="no__choice">
-                  <h2>{`There is no choises to "${questions.question_text}"`}</h2>
-                  <div className="choice__div no__choice__div">
-                    <AddChoices
-                      setChoice={setChoice}
-                      choice={choice}
-                      handleChoiceSubmit={submitChoice}
-                    />
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  {status > 200 ? (
-                    <h3 className="error">{`Your vote didn't submit!! status: ${status}`}</h3>
-                  ) : null}
-                  {status === 200 ? (
-                    <h3 className="ok">
-                      Vote for <b className="voted">{voteVoted[0]}</b> was
-                      submitted to question {questions.question_text}
-                      {` with status: ${status} = OK`}
-                    </h3>
-                  ) : (
-                    <div className="response">
-                      <h2>{questions.question_text}</h2>
-                      {showForm ? (
-                        <div className="choice__div">
-                          <AddChoices
-                            setChoice={setChoice}
-                            choice={choice}
-                            handleChoiceSubmit={submitChoice}
-                          />
-                          <button
-                            className="choice__div__button"
-                            onClick={ShowForms}
-                          >
-                            X
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="choice__div">
-                          <button onClick={ShowForms}>+</button>
-                        </div>
-                      )}
-                      <form onSubmit={onSubmit} method="post">
-                        <ul>
-                          <ChoiceForm
-                            questions={questions}
-                            handleChange={handleChange}
-                            vote={vote}
-                          />
-                        </ul>
-                        <div className="response__div">
-                          <input
-                            className="choice__button"
-                            type="submit"
-                            value="Submit"
-                          />
-                        </div>
-                      </form>
-                    </div>
-                  )}
-                  {showRes ? (
-                    <div>
-                      <DisplayResults questions={questions} />
-                      <DisplayTotalVotes questions={questions} />
-                    </div>
-                  ) : null}
-                </div>
-              )}
-            </div>
-          ) : (
-            "Loading..."
-          )}
-        </section>
-      </main>
+          <p>No poll with the given id</p>
+        </div>
+      )}
     </Layout>
   );
 };
 
-Choice.getInitialProps = async context => {
+Choice.getInitialProps = async (context, token) => {
   const { id } = context.query;
   let poll;
   try {
-    const response = await axios.get(`${BASE_URL}polls/questions/${id}/`);
+    const response = await axios.get(`${BASE_URL}polls/questions/${id}/`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
     poll = await response.data;
   } catch (error) {
     console.log(error);
+    LogOut(); 
   }
   return { poll: poll, id: id };
 };
 
-export default withRouter(Choice);
+export default withAuthSync(withRouter(Choice));

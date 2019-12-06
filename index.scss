@@ -57,6 +57,11 @@ input[type="submit"] {
     background-color: $p-button-h;
     color: rgb(241, 238, 238);
   }
+  &:focus {
+    outline: none;
+    border: 1px solid $p-button-h;
+    border-radius: 5px;
+  }
 }
 b {
   color: rgb(17, 43, 17);
@@ -157,10 +162,15 @@ header {
       position: relative;
       padding-bottom: 60px;
       input[type="text"] {
-        border-radius: 0.5rem;
+        border-radius: 30px;
         padding: 0.5rem;
         width: 100%;
         font-size: 1.2rem;
+        &:focus {
+          outline: none;
+          border: 2px solid $p-button-h;
+          border-radius: 30px;
+        }
       }
       .form__button {
         position: absolute;
@@ -214,6 +224,9 @@ header {
             &:hover {
               background-color: $d-button-h;
             }
+            &:focus {
+              outline: none;
+            }
           }
         }
         .formChoises {
@@ -224,6 +237,9 @@ header {
             margin-top: 20px;
             &:disabled {
               background-color: lightgray;
+            }
+            &:focus {
+              outline: none;
             }
           }
         }
@@ -251,6 +267,9 @@ header {
         &:hover {
           background-color: $p-button-h;
           color: rgb(241, 238, 238);
+        }
+        &:focus {
+          outline: none;
         }
       }
     }
@@ -302,6 +321,9 @@ header {
       background-color: $p-button-h;
       color: rgb(241, 238, 238);
     }
+    &:focus {
+      outline: none;
+    }
   }
   .no__choice {
     display: flex;
@@ -310,10 +332,15 @@ header {
       display: flex;
       margin: auto;
       input[type="text"] {
-        border-radius: 0.5rem;
+        border-radius: 30px;
         padding: 0.5rem;
         width: 100%;
         font-size: 1.2rem;
+        &:focus {
+          outline: none;
+          border: 1px solid $p-button-h;
+          border-radius: 30px;
+        }
       }
     }
   }
@@ -337,6 +364,9 @@ header {
   &:hover {
     background-color: $d-button-h;
   }
+  &:focus {
+    outline: none;
+  }
 }
 .total__votes {
   padding-left: 1rem;
@@ -352,6 +382,9 @@ header {
     &:disabled {
       background-color: lightgray;
     }
+    &:focus {
+      outline: none;
+    }
   }
 }
 .response {
@@ -362,7 +395,7 @@ header {
     justify-content: center;
     align-items: center;
     input[type="text"] {
-      border-radius: 0.5rem;
+      border-radius: 30px;
       padding: 0.5rem;
       width: 100%;
       font-size: 1.2rem;
@@ -375,9 +408,12 @@ header {
       &:hover {
         background-color: $d-button-h !important;
       }
+      &:focus {
+        outline: none;
+      }
     }
     button {
-      border-radius: 0.5rem;
+      border-radius: 5px;
       height: 26px;
       border: none;
       color: white;
@@ -387,6 +423,9 @@ header {
       &:hover {
         color: rgb(209, 250, 199);
         background-color: rgb(45, 170, 29);
+      }
+      &:focus {
+        outline: none;
       }
     }
   }
@@ -415,15 +454,18 @@ header {
 /////////////// LOGIN AND REGISTER FORM ///////////////////////
 ///////////////////////////////////////////////////////////////
 .loginform {
-  width: 60%;
+  max-width: 300px;
   margin: auto;
-  padding: 2rem 0;
+  padding: 1.6rem 0;
   border: 1px solid rgba(0, 0, 0, 0.116);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  span{
+    margin: 10px;
+  }
   label {
     display: flex;
     flex-direction: column;
@@ -433,6 +475,7 @@ header {
       border-radius: 30px;
       padding: 4px 0 4px 6px;
       border: 1px solid rgba(0, 0, 0, 0.116);
+      font-size: 1.1rem;
       &:focus {
         outline: none;
         border: 1px solid $p-button-h;
@@ -443,10 +486,10 @@ header {
   button {
     color: white;
     background-color: $p-button;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1.4rem;
     border: none;
-    padding: 7px;
+    padding: 3px 9px;
     cursor: pointer;
     margin: 10px;
     border: 1px solid rgba(0, 0, 0, 0.116);
@@ -457,6 +500,11 @@ header {
     &:disabled {
       background-color: lightgray;
       cursor: not-allowed;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $p-button-h;
+      border-radius: 30px;
     }
   }
   .loginform__error {

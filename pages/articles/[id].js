@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layoutFolder/Layout";
 import { cats } from "../../components/dummyData";
 import Link from 'next/link';
-const Post = () => {
+const Post = (props) => {
   const router = useRouter();
 
-  const FilterCats = (props) => {
+  const FilterCats = () => {
     let cat = cats.filter(c => c.title === router.query.id);
     console.log(cat);
     return (
