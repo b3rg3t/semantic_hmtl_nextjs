@@ -19,7 +19,7 @@
         width: 90%;
         margin: auto;
       .img {
-        width: 100%;
+        max-width: 100%;
         border-radius: 0.5rem;
       }
       .article__cat__box__div{
@@ -32,6 +32,10 @@
   }
 }
 
+.img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
 figure{
     margin: 0;
 }

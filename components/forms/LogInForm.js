@@ -8,6 +8,7 @@ const LogInForm = () => {
 
   const onSubmit = event => {
     event.preventDefault();
+    
     LogIn(username, password)
   };
   const isDisabled = password.length &&  username.length > 0;
@@ -31,6 +32,7 @@ const LogInForm = () => {
             onChange={event => setPassword(event.target.value)}
             value={password}
             placeholder="Password"
+            minlength="8"
             required
           />
         </label>
@@ -40,6 +42,7 @@ const LogInForm = () => {
             <a>Register</a>
           </Link>
         </span>
+        <div className="loginform__error"></div>
         <button disabled={!isDisabled}>Log in</button>
       </form>
     </>

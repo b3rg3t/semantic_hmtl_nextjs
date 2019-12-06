@@ -13,7 +13,7 @@ const Post = (props) => {
         {cat.map((k, index) => (
           <li key={index}>
             <p>{k.name}</p>
-            <img src={k.pic} alt={k.alt} />
+            <img className="img" src={k.pic} alt={k.alt} />
             <p>{k.fulltext}</p>
           </li>
         ))}

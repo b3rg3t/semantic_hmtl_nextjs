@@ -224,7 +224,7 @@ Choice.getInitialProps = async (context, token) => {
     poll = await response.data;
   } catch (error) {
     console.log(error);
-    LogOut(); 
+    LogOut();
   }
   return { poll: poll, id: id };
 };
