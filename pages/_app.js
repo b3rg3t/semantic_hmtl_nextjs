@@ -1,6 +1,22 @@
 import React from "react";
 import App from "next/app";
 import cookies from "next-cookies";
+import nprogress from "nprogress"
+import Router from "next/router"
+import "nprogress/nprogress.css";
+
+function handleRouteChangeStart(){
+  nprogress.start();
+}
+function handleRouteChangeComplete(){
+  nprogress.done();
+}
+function handleRouteChangeError() {
+  nprogress.done();
+}
+Router.events.on("routeChangeStart", handleRouteChangeStart);
+Router.events.on("routeChangeComplete", handleRouteChangeComplete);
+Router.events.on("routeChangeError", handleRouteChangeError);
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for

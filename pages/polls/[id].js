@@ -9,7 +9,8 @@ import DisplayTotalVotes from "../../components/DisplayTotalVotes";
 import DisplayResults from "../../components/DisplayResults";
 import { AddChoices } from "../../components/forms/AddQuestion";
 import { BASE_URL } from "../../paths/url";
-import { withAuthSync, LogOut } from "../../lib/auth";
+import { withAuthSync } from "../../lib/auth";
+import Router from "next/router"
 
 const axios = require("axios");
 
@@ -224,7 +225,12 @@ Choice.getInitialProps = async (context, token) => {
     poll = await response.data;
   } catch (error) {
     console.log(error);
-    LogOut();
+    if (typeof window === "undefined") {
+      context.res.writeHead(302, { Location: "/login" });
+      context.res.end();
+    } else {
+      Router.push("/login");
+    }
   }
   return { poll: poll, id: id };
 };

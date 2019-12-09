@@ -14,7 +14,6 @@ const LogInForm = () => {
     LogIn(username, password, updateIsLoggingIn);
   };
   const updateIsLoggingIn = (booleanCallback, errorMessage) => {
-    console.log("this ran")
     setError(errorMessage);
     setLoading(booleanCallback)
   };
@@ -56,7 +55,6 @@ const LogInForm = () => {
           {error && error}
         </div>
         <Loading loading={loading} />
-
         <button disabled={!isDisabled}>Log in</button>
       </form>
     </>

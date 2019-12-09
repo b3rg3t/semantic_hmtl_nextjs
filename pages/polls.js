@@ -3,10 +3,10 @@ import Head from "next/head";
 import AddQuestion from "../components/forms/AddQuestion";
 import { useState, useEffect } from "react";
 import PollsList from "../components/PollsList";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import DetailsPolls from "../components/DetailsPolls";
-import { BASE_URL } from "../paths/url";// import cookies from 'next-cookies'
-import { withAuthSync, LogOut } from "../lib/auth";
+import { BASE_URL } from "../paths/url"; // import cookies from 'next-cookies'
+import { withAuthSync } from "../lib/auth";
 
 const axios = require("axios");
 
@@ -126,7 +126,12 @@ Polls.getInitialProps = async (context, token) => {
     polls = await res.data;
   } catch (error) {
     console.log(error);
-    LogOut(); 
+    if (typeof window === "undefined") {
+      context.res.writeHead(302, { Location: "/login" });
+      context.res.end();
+    } else {
+      Router.push("/login");
+    }
   }
   return { polls: polls };
 };
