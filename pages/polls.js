@@ -32,6 +32,8 @@ const Polls = props => {
   useEffect(() => {
     setQuestions(props.polls);
   }, []);
+
+  //Updates PollsList with updated polls after submitting new poll
   useEffect(() => {
     const updateView = async () => {
       let updatedData;
