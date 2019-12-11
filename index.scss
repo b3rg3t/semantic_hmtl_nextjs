@@ -95,15 +95,14 @@ header {
       justify-content: center;
       align-items: center;
       margin: 10px;
-      background-color: $p-button;
-      color: white;
+      background-color: rgb(239, 239, 252);
       border: none;
       padding: 4px 8px;
       border-radius: 0.5rem;
       font-size: 1rem;
       cursor: pointer;
       &:hover {
-        background-color: $p-button-h;
+        background-color: rgb(201, 201, 206);
       }
     }
   }
@@ -358,11 +357,29 @@ header {
   border: none;
   color: white;
   padding: 5px 7px;
-  margin: 5px 0;
+  margin: 5px 5px;
   cursor: pointer;
   background-color: $d-button;
   &:hover {
     background-color: $d-button-h;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    background-color: lightgray;
+  }
+}
+.cancel {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 5px 7px;
+  margin: 5px 5px;
+  cursor: pointer;
+  background-color: $p-button;
+  &:hover {
+    background-color: $p-button-h;
   }
   &:focus {
     outline: none;
@@ -530,14 +547,80 @@ header {
     border-top-color: rgb(221, 40, 34);
     border-left-color: red;
   }
-  .peg{
+  .peg {
     box-shadow: 0 0 10px red, 0 0 5px red;
   }
 }
+
+.profile {
+  width: 100vw;
+  .profile__div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+.delete__popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.377);
+  z-index: 90;
+  .delete__form {
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    background-color: $error;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    .x{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    form { 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      label {
+        display: flex;
+        flex-direction: column;
+        input {
+          margin: 4px 0 10px 0;
+          border-radius: 30px;
+          padding: 4px 0 4px 8px;
+          border: 1px solid rgba(0, 0, 0, 0.116);
+          font-size: 1.1rem;
+          &:focus {
+            outline: none;
+            border: 1px solid $p-button-h;
+            border-radius: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
 //////////////////////////////////////////
 //MEDIA QUERYS
 @media screen and (max-width: 600px) {
-  #nprogress{
+  #nprogress {
     .spinner {
       top: 10px;
       right: 90px;
@@ -564,6 +647,7 @@ header {
       width: 100%;
     }
   }
+  .profile__div {
+    width: 90% !important;
+  }
 }
-
-

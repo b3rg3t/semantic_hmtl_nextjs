@@ -1,14 +1,14 @@
 import React from "react";
 import App from "next/app";
 import cookies from "next-cookies";
-import nprogress from "nprogress"
-import Router from "next/router"
+import nprogress from "nprogress";
+import Router from "next/router";
 import "nprogress/nprogress.css";
 
-function handleRouteChangeStart(){
+function handleRouteChangeStart() {
   nprogress.start();
 }
-function handleRouteChangeComplete(){
+function handleRouteChangeComplete() {
   nprogress.done();
 }
 function handleRouteChangeError() {
@@ -24,16 +24,19 @@ class MyApp extends App {
   // perform automatic static optimization, causing every page in your app to
   // be server-side rendered.
   //
+  
   static async getInitialProps(appContext) {
     // calls page's `getInitialProps` and fills `appProps.pageProps`
+    
     const token = cookies(appContext.ctx).token || "";
-    const appProps = await App.getInitialProps(appContext,token);
+    
+    const appProps = await App.getInitialProps(appContext, token);
     // if (appContext.Component.getInitialProps) {
     //   pageProps = await appContext.Component.getInitialProps(appContext, token);
     // }
-    return { ...appProps, token: cookies(appContext.ctx).token || ""  };
+    return { ...appProps, token: cookies(appContext.ctx).token || "" };
   }
-
+  
   render() {
     const { Component, pageProps, token } = this.props;
     return <Component {...pageProps} token={token} />;

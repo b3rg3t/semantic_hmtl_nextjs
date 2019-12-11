@@ -1,5 +1,5 @@
 import { cats } from "../dummyData";
-import "./printArt.scss";
+import "../layoutFolder/layout.scss";
 import Link from "next/link";
 
 const PostLink = ({ id }) => (

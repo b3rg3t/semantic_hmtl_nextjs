@@ -11,6 +11,21 @@ const Layout = ({ children, title, token }) => (
         rel="stylesheet"
       />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+      <meta
+        name="description"
+        content="This is the best Cat site ever, use this if you love cats. Ask questions about cats."
+      />
+
+      <meta
+        itemprop="description"
+        content="This is the best Cat site ever, use this if you love cats. Ask questions about cats."
+      />
+
+      <meta
+        name="og:description"
+        content="This is the best Cat site ever, use this if you love cats. Ask questions about cats."
+      />
     </Head>
     <Header token={token} />
     <h1>{title}</h1>

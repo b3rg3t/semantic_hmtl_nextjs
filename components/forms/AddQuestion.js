@@ -56,6 +56,7 @@ const FormQuestion = props => {
               onChange={event => setQuestion(event.target.value)}
               value={question}
               placeholder="Best animal.."
+              maxLength="200"
               required
             />
           </label>

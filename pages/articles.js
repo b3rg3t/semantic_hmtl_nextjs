@@ -18,4 +18,6 @@ const Articles = props => {
   );
 };
 
+
+
 export default withAuthSync(Articles);

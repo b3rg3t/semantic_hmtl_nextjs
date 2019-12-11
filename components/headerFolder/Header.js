@@ -39,6 +39,11 @@ const Header = props => {
                 <a className="nav__a">Polls</a>
               </Link>
             </li>
+            <li className="header__li">
+              <Link href="/profile">
+                <a className="nav__a">Profile</a>
+              </Link>
+            </li>
           </ul>
         </nav>
       )}
