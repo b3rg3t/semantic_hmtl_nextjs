@@ -18,7 +18,6 @@ const LogInForm = () => {
     setLoading(booleanCallback)
   };
   const isDisabled = (password.length && username.length > 0) && !loading;
-
   return (
     <>
       <form onSubmit={onSubmit} className="loginform">
@@ -55,7 +54,7 @@ const LogInForm = () => {
           {error && error}
         </div>
         <Loading loading={loading} />
-        <button disabled={!isDisabled}>Log in</button>
+        <button className="submit-button" disabled={!isDisabled}>Log in</button>
       </form>
     </>
   );

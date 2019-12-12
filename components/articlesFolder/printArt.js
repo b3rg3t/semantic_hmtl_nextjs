@@ -16,7 +16,7 @@ const PrintArt = () => (
           <article className="article__cat__box">
             <h3>{cat.title}</h3>
             <figure>
-              <img className="img" src={cat.pic} alt={cat.alt} />
+              <img className="img" src={cat.pic} alt={cat.alt} height="200px" />
               <figcaption>{cat.name}</figcaption>
             </figure>
             <div className="article__cat__box__div">

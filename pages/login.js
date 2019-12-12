@@ -8,7 +8,7 @@ const LogIn = () => (
     <title>Log in</title> 
     </Head>
     <main>
-      <section>
+      <section className="login">
         <LogInForm />
       </section>
     </main>

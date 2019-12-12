@@ -10,6 +10,10 @@ const Layout = ({ children, title, token }) => (
         href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap"
+        rel="stylesheet"
+      />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
       <meta
@@ -28,7 +32,7 @@ const Layout = ({ children, title, token }) => (
       />
     </Head>
     <Header token={token} />
-    <h1>{title}</h1>
+    {/* <h1>{title}</h1> */}
     {children}
     <Footer />
   </div>

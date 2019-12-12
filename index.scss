@@ -15,35 +15,11 @@ $d-button-h: rgb(247, 112, 112);
 $p-button: #0f83f7;
 $p-button-h: #55a6f8;
 
-:root {
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  color: #17325a;
-}
+//Fonts
+$p-font: "Lilita One", cursive;
 
-main {
-  width: 100%;
-}
-ul {
-  margin: 0 0 20px 0;
-  padding: 0;
-}
-li {
-  list-style: none;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.116);
-  margin: 10px;
-  padding: 20px;
-  background-color: $secondary-backgorund;
-}
-input[type="submit"] {
+//Buttons
+.submit-button {
   color: white;
   background-color: $p-button;
   border-radius: 5px;
@@ -51,7 +27,7 @@ input[type="submit"] {
   border: none;
   padding: 7px;
   cursor: pointer;
-  margin: 10px;
+  margin: 10px 0;
   border: 1px solid rgba(0, 0, 0, 0.116);
   &:hover {
     background-color: $p-button-h;
@@ -62,294 +38,47 @@ input[type="submit"] {
     border: 1px solid $p-button-h;
     border-radius: 5px;
   }
+  &:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
 }
-b {
-  color: rgb(17, 43, 17);
-}
-h2 {
-  text-align: center;
-}
-.error {
-  background-color: rgb(236, 164, 164);
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-.ok {
-  background-color: lightgreen;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-label {
+.x-button {
+  padding: 5px 8px 3px 8px;
+  background-color: rgb(249, 249, 250);
+  color: rgb(68, 68, 68);
+  margin: 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 50%;
+  cursor: pointer;
   &:hover {
-    cursor: pointer;
-    color: gray;
+    color: rgb(243, 242, 242);
+    background: gray;
+  }
+  &:focus {
+    outline: none;
   }
 }
-header {
-  .header__div {
-    display: flex;
-    justify-content: space-between;
-    .login-logout {
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 10px;
-      background-color: rgb(239, 239, 252);
-      border: none;
-      padding: 4px 8px;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      &:hover {
-        background-color: rgb(201, 201, 206);
-      }
-    }
-  }
-}
-.polls__li {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  .polls__li__div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #2859a3ad;
-  }
-  .polls__li__poll {
-    text-decoration: none;
-    color: rgb(61, 95, 189);
-    font-weight: bold;
-    &:hover {
-      color: rgb(138, 149, 211);
-    }
-  }
-  .polls__li__choice {
-    margin-left: 1rem;
-    margin-bottom: 0.4rem;
-  }
-  .polls__li__date {
-    margin: 0;
-    position: absolute;
-    right: 1rem;
-    font-size: 0.8rem;
-  }
-}
-
-.polls {
+.add-button {
+  border-radius: 50%;
+  padding: 4px 8px 4px 7px;
+  font-weight: bold;
   margin: auto;
-  .form {
-    flex: 1 200px;
-    margin-top: 10px;
-    .details {
-      margin-top: 10px;
-      background-color: rgba(253, 247, 186, 0.692);
-      border: 1px solid rgba(0, 0, 0, 0.116);
-      border-radius: 0.5rem;
-      flex: 1;
-      .details__div {
-        display: flex;
-        justify-content: center;
-      }
-    }
-    .form__ {
-      background-color: $third-background;
-      border: 1px solid rgba(0, 0, 0, 0.116);
-      border-radius: 0.5rem;
-      flex: 1 400px;
-      position: relative;
-      padding-bottom: 60px;
-      input[type="text"] {
-        border-radius: 30px;
-        padding: 0.5rem;
-        width: 100%;
-        font-size: 1.2rem;
-        &:focus {
-          outline: none;
-          border: 2px solid $p-button-h;
-          border-radius: 30px;
-        }
-      }
-      .form__button {
-        position: absolute;
-        right: 0;
-        padding: 5px 7px;
-        background-color: rgba(240, 239, 255, 0);
-        color: rgb(68, 68, 68);
-        margin: 0.2rem;
-        font-size: 1rem;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        &:hover {
-          color: rgb(177, 177, 177);
-        }
-      }
-      .form__question {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        label {
-          width: 100%;
-          &:hover {
-            color: black;
-          }
-        }
-      }
-      .form__div__choice {
-        padding-top: 16px;
-      }
-      .form__div {
-        width: 90%;
-        margin: auto;
-        li {
-          padding: 0 10px;
-        }
-        .choiceList__div {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          button {
-            background-color: $d-button;
-            border: none;
-            margin: 0.6rem;
-            cursor: pointer;
-            color: white;
-            border-radius: 50%;
-            padding: 5px 8px;
-            &:hover {
-              background-color: $d-button-h;
-            }
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-        .formChoises {
-          display: flex;
-          input[type="submit"] {
-            border-radius: 50%;
-            padding: 2px 8px;
-            margin-top: 20px;
-            &:disabled {
-              background-color: lightgray;
-            }
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-      }
-      .form__submit {
-        position: absolute;
-        bottom: 0;
-      }
-    }
+  font-size: 1.2rem;
+  color: white;
+  background-color: $p-button;
+  cursor: pointer;
+  border: none;
+  &:hover {
+    background-color: $p-button-h;
   }
-
-  //////////  LIST OF ALL QUESTIONS  ///////////////////
-  .question__list {
-    width: 80%;
-    margin: auto;
-    .question__list__div {
-      button {
-        color: white;
-        background-color: $p-button;
-        border-radius: 50%;
-        font-size: 1.4rem;
-        border: none;
-        cursor: pointer;
-        margin: 10px;
-        &:hover {
-          background-color: $p-button-h;
-          color: rgb(241, 238, 238);
-        }
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-    .question__list__list {
-      display: flex;
-      flex-wrap: wrap;
-      ul {
-        flex: 3 300px;
-      }
-      .details__ {
-        flex: 1 200px;
-        height: 150px;
-        background-color: rgba(255, 255, 224, 0.432);
-        margin-top: 10px;
-        margin-right: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.116);
-        border-radius: 0.5rem;
-        .details__div {
-          margin: 1rem;
-          h3 {
-            border-bottom: 1px solid gray;
-          }
-        }
-      }
-    }
+  &:disabled {
+    background: lightgray;
   }
-}
-////////////////////////////////////////////////////////////////////////////////
-
-////////////// CHOICES LIST ///////////////////////////////////////////////////
-.polls__id {
-  width: 60%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  .back__button {
-    color: white;
-    width: 100px;
-    background-color: $p-button;
-    border-radius: 5px;
-    font-size: 1.4rem;
-    border: none;
-    padding: 7px 14px;
-    cursor: pointer;
-    margin: 10px;
-    text-decoration: none;
-    margin: auto;
-    &:hover {
-      background-color: $p-button-h;
-      color: rgb(241, 238, 238);
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  .no__choice {
-    display: flex;
-    flex-direction: column;
-    .no__choice__div {
-      display: flex;
-      margin: auto;
-      input[type="text"] {
-        border-radius: 30px;
-        padding: 0.5rem;
-        width: 100%;
-        font-size: 1.2rem;
-        &:focus {
-          outline: none;
-          border: 1px solid $p-button-h;
-          border-radius: 30px;
-        }
-      }
-    }
-  }
-}
-
-.response__div {
-  width: 100%;
-  display: flex;
-  .choice__button {
-    margin: auto;
+  &:focus {
+    outline: none;
   }
 }
 .delete {
@@ -357,7 +86,6 @@ header {
   border: none;
   color: white;
   padding: 5px 7px;
-  margin: 5px 5px;
   cursor: pointer;
   background-color: $d-button;
   &:hover {
@@ -385,71 +113,314 @@ header {
     outline: none;
   }
 }
-.total__votes {
-  padding-left: 1rem;
-  margin-top: 0rem;
+///////Input type text
+input[type="text"] {
+  border-radius: 30px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  &:focus {
+    outline: none;
+    border: 2px solid $p-button-h;
+    border-radius: 30px;
+  }
 }
-.formChoises {
+:root {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: #17325a;
+}
+main {
+  width: 100%;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  border-radius: 0.5rem;
+  margin: 10px;
+  padding: 20px;
+}
+a{
+  text-decoration: none;
+}
+.index {
+  height: 50vh;
+  width: 100vw;
+  background: url("/images/cat1.jpg") no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: white;
+  }
+}
+.index__content {
+  max-width: 960px;
   margin: auto;
-  input[type="submit"] {
-    border-radius: 50%;
-    padding: 2px 8px;
-    margin-top: 20px;
-    &:disabled {
-      background-color: lightgray;
+}
+h2 {
+  text-align: center;
+}
+.error {
+  background-color: rgb(236, 164, 164);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.ok {
+  background-color: lightgreen;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+label {
+  &:hover {
+    cursor: pointer;
+    color: #133b79;
+  }
+}
+.polls__loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  height: 155.94px;
+  border-radius: 0.5rem;
+}
+.polls__li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-color: $secondary-backgorund;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  .polls__li__div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #2859a3ad;
+  }
+  .polls__li__poll {
+    text-decoration: none;
+    color: rgb(61, 95, 189);
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: $p-font;
+    &:hover {
+      color: rgb(138, 149, 211);
     }
-    &:focus {
-      outline: none;
+    button {
+      position: absolute;
+      top: 0;
     }
+  }
+  .polls__li__choice {
+    margin-left: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .polls__li__date {
+    margin: 0;
+    position: absolute;
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+}
+//////////////POLLS PAGE//////////////////////
+//100% background picture
+.p {
+  flex: 1 1;
+}
+.polls {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background: url("/images/catfly.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  .form {
+    .form__container {
+      font-family: $p-font;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgb(40,89,163);
+      background: rgb(40,89,163);
+      background: linear-gradient(0deg, rgba(40,89,163,1) 26%, rgba(75,185,255,1) 100%, rgba(40,89,163,1) 100%);      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+      border-radius: 0.5rem;
+      flex: 1 400px;
+      position: relative;
+      padding-bottom: 60px;
+      color: white;
+      .form__button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+      .form__question {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h4{
+          font-size: 1.2rem;
+          font-weight:normal;
+        }
+      }
+      .form__container__div {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+      }
+      .form__container__list{
+        h6{
+          margin: 0;
+        }
+        li {
+          padding: 10px 10px;
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+          -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+          background: white;
+          color: $primary-background;
+        }
+        .choiceList__div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+      .form__submit {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+  ////////////////////////////////////
+  //////////  LIST OF ALL QUESTIONS  ///////////////////
+  .question__list {
+    width: 960px;
+    .question__list__div {
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+    .question__list__list {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 40px;
+      ul {
+        flex: 3 300px;
+      }
+      .details__ {
+        flex: 1 200px;
+        height: 150px;
+        background-color: rgb(255, 255, 224);
+        margin-top: 10px;
+        margin-right: 10px;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+        border-radius: 0.5rem;
+        .details__div {
+          margin: 1rem;
+          p {
+            margin: 0;
+          }
+          h3 {
+            margin: 10px 0;
+            font-family: $p-font;
+            font-size: 1.4em;
+            font-weight: bold;
+            border-bottom: 1px solid gray;
+          }
+        }
+      }
+    }
+  }
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////// CHOICES LIST ///////////////////////////////////////////////////
+.polls__id {
+  max-width: 960px;
+  margin: auto;
+  margin-top: 30px ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form__choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  label{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 .response {
   margin: auto;
-  .choice__div {
-    height: 67.6px;
+  font-family: $p-font;
+  font-size: 1.6rem;
+  .response__div {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    input[type="text"] {
-      border-radius: 30px;
-      padding: 0.5rem;
-      width: 100%;
-      font-size: 1.2rem;
-    }
-    .choice__div__button {
-      border-radius: 5px;
-      background-color: $d-button !important;
-      margin: 20px;
-      cursor: pointer;
-      &:hover {
-        background-color: $d-button-h !important;
-      }
-      &:focus {
-        outline: none;
-      }
-    }
-    button {
-      border-radius: 5px;
-      height: 26px;
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      background-color: rgb(53, 143, 53);
-      cursor: pointer;
-      &:hover {
-        color: rgb(209, 250, 199);
-        background-color: rgb(45, 170, 29);
-      }
-      &:focus {
-        outline: none;
-      }
+  }
+  li {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  }
+  .choice__div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    .delete{
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
   }
 }
 //////////////////////////////////////////////////////////
 ////////////// CHART AND TOTAL VOTES /////////////////////
 //////////////////////////////////////////////////////////
+.total__votes {
+  padding-left: 1rem;
+  margin-top: 0rem;
+}
 .result {
   display: flex;
   flex-wrap: wrap;
@@ -460,9 +431,10 @@ header {
     margin: 0;
     li {
       margin: 0.2rem;
-      padding: 0 1rem;
+      padding: 0.5rem 0.8rem;
       p {
-        padding: 0rem;
+        padding: 0;
+        margin: 0;
       }
     }
   }
@@ -470,67 +442,48 @@ header {
 ///////////////////////////////////////////////////////////////
 /////////////// LOGIN AND REGISTER FORM ///////////////////////
 ///////////////////////////////////////////////////////////////
-.loginform {
-  max-width: 300px;
-  margin: auto;
-  padding: 1.6rem 0;
-  border: 1px solid rgba(0, 0, 0, 0.116);
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  span {
-    margin: 10px;
-  }
-  label {
+.login {
+  margin-top: 20px;
+  .loginform {
+    max-width: 300px;
+    margin: auto;
+    padding: 1.6rem 0;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.5rem;
-    input {
-      margin: auto;
-      border-radius: 30px;
-      padding: 4px 0 4px 8px;
-      border: 1px solid rgba(0, 0, 0, 0.116);
-      font-size: 1.1rem;
-      &:focus {
-        outline: none;
-        border: 1px solid $p-button-h;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin: 10px;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+      input {
+        margin: auto;
         border-radius: 30px;
+        padding: 4px 0 4px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.301);
+        font-size: 1.1rem;
+        &:focus {
+          outline: none;
+          border: 1px solid $p-button-h;
+          border-radius: 30px;
+        }
       }
     }
-  }
-  button {
-    color: white;
-    background-color: $p-button;
-    border-radius: 30px;
-    font-size: 1.4rem;
-    border: none;
-    padding: 3px 9px;
-    cursor: pointer;
-    margin: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.116);
-    &:hover {
-      background-color: $p-button-h;
-      color: rgb(241, 238, 238);
-    }
-    &:disabled {
-      background-color: lightgray;
-      cursor: not-allowed;
-    }
-    &:focus {
-      outline: none;
-      border: 1px solid $p-button-h;
-      border-radius: 30px;
-    }
-  }
-  .loginform__error {
-    background-color: $error;
-    border-radius: 0.5rem;
-    p {
-      font-size: 0.7rem;
-      padding: 5px 10px;
-      margin: 0;
+    .loginform__error {
+      background-color: $error;
+      border-radius: 0.5rem;
+      p {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        margin: 0;
+      }
     }
   }
 }
@@ -541,7 +494,7 @@ header {
   }
   .spinner {
     top: 20px;
-    right: 100px;
+    right: 20px;
   }
   .spinner-icon {
     border-top-color: rgb(221, 40, 34);
@@ -551,9 +504,10 @@ header {
     box-shadow: 0 0 10px red, 0 0 5px red;
   }
 }
-
+////////////////////// PROFILE PAGE ///////////////////
 .profile {
-  width: 100vw;
+  margin-top: 30px;
+  width: 100%;
   .profile__div {
     display: flex;
     flex-direction: column;
@@ -561,8 +515,42 @@ header {
     align-items: center;
     width: 80%;
     margin: auto;
+
     p {
       margin: 5px 0;
+    }
+    .header {
+      display: flex;
+      width: 100%;
+      // justify-content: center;
+      align-items: center;
+      background: rgb(58, 89, 180);
+      background: linear-gradient(
+        315deg,
+        rgba(69, 245, 252, 1) 0%,
+        rgba(29, 166, 253, 1) 50%,
+        rgba(58, 89, 180, 1) 100%
+      );
+      height: 80px;
+      color: white;
+      h1 {
+        margin: 0 10px;
+      }
+    }
+    .flex-container {
+      display: flex;
+      border: 1px solid lightgray;
+      padding: 0 10px 10px 10px;
+      flex-direction: column;
+      width: 100%;
+      .columns {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+      }
+      .description {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -587,12 +575,12 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    .x{
+    .x {
       position: absolute;
       top: 0;
       right: 0;
     }
-    form { 
+    form {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -616,6 +604,60 @@ header {
     }
   }
 }
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form__profile {
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    position: absolute;
+    background: rgb(216, 232, 255);
+    top: 130px;
+    border-radius: 10px;
+    margin: auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    button {
+      color: white;
+      background-color: $p-button;
+      border-radius: 30px;
+      font-size: 1.4rem;
+      border: none;
+      padding: 3px 9px;
+      cursor: pointer;
+      margin: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.116);
+      &:hover {
+        background-color: $p-button-h;
+        color: rgb(241, 238, 238);
+      }
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      input {
+        margin: 4px 0 10px 0;
+        border-radius: 30px;
+        padding: 4px 0 4px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.116);
+        font-size: 1.1rem;
+        &:focus {
+          outline: none;
+          border: 1px solid $p-button-h;
+          border-radius: 30px;
+        }
+      }
+      textarea {
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.116);
+        padding: 6px;
+      }
+    }
+  }
+}
 
 //////////////////////////////////////////
 //MEDIA QUERYS
@@ -634,9 +676,6 @@ header {
   }
   .question__list {
     width: 100% !important;
-    .question__list__div {
-      margin-left: 30px;
-    }
   }
   .details__ {
     margin-right: 0 !important;

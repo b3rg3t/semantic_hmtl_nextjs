@@ -11,7 +11,7 @@ import { withAuthSync } from "../lib/auth";
 const axios = require("axios");
 
 const Polls = props => {
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [questions, setQuestions] = useState([]);
   const [updateList, setUpdateList] = useState(false);
   const [choiceList, setChoiceList] = useState([]);
@@ -65,12 +65,13 @@ const Polls = props => {
     newChoiceList.splice(choiceID, 1);
     setChoiceList(newChoiceList);
   };
+
   return (
     <Layout title="Polls" token={props.token}>
       <Head>
         <title>Polls</title>
       </Head>
-      <main>
+      <main className="p">
         <section className="polls">
           {questions ? (
             <section className="question__list">
@@ -92,19 +93,21 @@ const Polls = props => {
               ) : (
                 <article className="question__list__div">
                   <span>Add question:</span>
-                  <button onClick={ShowForms} title="Add question">
+                  <button
+                    className="add-button"
+                    onClick={ShowForms}
+                    title="Add question"
+                  >
                     +
                   </button>
                 </article>
               )}
               <section className="question__list__list">
-                <ul>
-                  <PollsList
-                    questions={questions}
-                    updateListCallback={UpdateTheList}
-                    token={props.token}
-                  />
-                </ul>
+                <PollsList
+                  questions={questions}
+                  updateListCallback={UpdateTheList}
+                  token={props.token}
+                />
                 <DetailsPolls questions={questions} />
               </section>
             </section>

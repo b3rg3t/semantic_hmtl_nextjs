@@ -86,7 +86,7 @@ const RegisterForm = () => {
         </span>
         <div className="loginform__error">{error && <p>{error}</p>}</div>
         <Loading loading={loading} />
-        <button disabled={!isDisabled}>Register</button>
+        <button className="submit-button" disabled={!isDisabled}>Register</button>
       </form>
     </>
   );

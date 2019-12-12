@@ -77,7 +77,7 @@ const ResponseChart = ({ questions }) => {
         loader={<div>Loading Chart</div>}
         options={pieOptions}
         graph_id="PieChart"
-        width={"100%"}
+        width={"400px"}
         height={"400px"}
         legend_toggle
       />

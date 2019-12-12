@@ -36,15 +36,16 @@ const FormQuestion = props => {
       console.log(error);
     }
   };
+
   const CloseForm = () => {
     props.onButtonCloseCallback(true);
   };
   return (
-    <div className="form__">
-      <button onClick={CloseForm} className="form__button" title="Close form">
+    <div className="form__container">
+      <button onClick={CloseForm} className="form__button x-button" title="Close form">
         X
       </button>
-      <div className="form__div">
+      <div className="form__container__div">
         <form onSubmit={onSubmit} className="form__question">
           <h4>Submit a new question</h4>
           <label>
@@ -60,17 +61,17 @@ const FormQuestion = props => {
               required
             />
           </label>
-          <input type="submit" value="Submit" className="form__submit" />
+          <input type="submit" value="Submit" className="form__submit submit-button" />
         </form>
       </div>
-      <div className="form__div form__div__choice">
+      <div className="form__container__div form__div__choice">
         <AddChoices
           handleChoiceSubmit={props.handleChoiceSubmit}
           setChoice={props.setChoice}
           choice={props.choice}
         />
       </div>
-      <div className="form__div">
+      <div className="form__container__list">
         {props.choiceList.length > 0 && <h6>Choices:</h6>}
         <ul>
           {props.choiceList &&
@@ -78,7 +79,7 @@ const FormQuestion = props => {
               <li id={index} key={index}>
                 <div className="choiceList__div">
                   <span>{choice.choice_text}</span>
-                  <button onClick={() => props.updateChoiceList(index)}>
+                  <button className="delete" onClick={() => props.updateChoiceList(index)}>
                     X
                   </button>
                 </div>
@@ -92,9 +93,9 @@ const FormQuestion = props => {
 
 export const AddChoices = props => {
   return (
-    <form onSubmit={props.handleChoiceSubmit} className="formChoises">
+    <form onSubmit={props.handleChoiceSubmit} className="form__choices">
       <label>
-        Choices:
+        Choice:
         <input
           type="text"
           value={props.choice}
@@ -102,7 +103,7 @@ export const AddChoices = props => {
           placeholder="Cat.."
         />
       </label>
-      <input type="submit" value="+" disabled={props.choice.length === 0} />
+      <input className="submit-button" title="Add choice" type="submit" value="+" disabled={props.choice.length === 0} />
     </form>
   );
 };

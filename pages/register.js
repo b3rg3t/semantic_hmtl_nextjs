@@ -8,7 +8,7 @@ const Register = () => (
     <title>Register</title> 
     </Head>
     <main>
-      <section>
+      <section className="login">
       <RegisterForm />
       </section>
     </main>

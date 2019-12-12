@@ -78,6 +78,7 @@ export const DeleteUser = props => {
               <div>
                 <button
                   className="delete"
+                  title="Delete"
                   onClick={DeleteUserWithId}
                   disabled={!isInvalid}
                 >

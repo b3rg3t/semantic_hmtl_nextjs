@@ -4,6 +4,7 @@ import { withAuthSync } from "../lib/auth";
 import { BASE_URL } from "../paths/url";
 import { DeleteUser } from "../components/DeleteUser";
 import { DisplayUser } from "../components/DisplayUser";
+import ProfileForm from "../components/forms/ProfileForm";
 
 const axios = require("axios");
 
@@ -16,7 +17,10 @@ const ProfilePage = props => (
       <section className="profile">
         <div className="profile__div">
           <DisplayUser user={props.user} />
-          <DeleteUser user={props.user} token={props.token}/>
+          <DeleteUser user={props.user} token={props.token} />
+        </div>
+        <div className="form">
+          <ProfileForm user={props.user} />
         </div>
       </section>
     </main>

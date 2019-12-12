@@ -121,21 +121,21 @@ const Choice = ({ poll, id, token }) => {
           <main>
             <section className="polls__id">
               <Link href="/polls">
-                <a className="back__button">{`< Back`}</a>
+                <a className="submit-button">{`< Back`}</a>
               </Link>
               {questions ? (
-                <div>
+                <div className="response">
                   {questions.choices.length === 0 ? (
-                    <div className="no__choice">
+                    <>
                       <h2>{`There is no choises to "${questions.question_text}"`}</h2>
-                      <div className="choice__div no__choice__div">
+                      <div className="choice__div">
                         <AddChoices
                           setChoice={setChoice}
                           choice={choice}
                           handleChoiceSubmit={submitChoice}
                         />
                       </div>
-                    </div>
+                    </>
                   ) : (
                     <div>
                       {status > 200 ? (
@@ -158,7 +158,7 @@ const Choice = ({ poll, id, token }) => {
                                 handleChoiceSubmit={submitChoice}
                               />
                               <button
-                                className="choice__div__button"
+                                className="delete"
                                 onClick={ShowForms}
                               >
                                 X
@@ -166,7 +166,7 @@ const Choice = ({ poll, id, token }) => {
                             </div>
                           ) : (
                             <div className="choice__div">
-                              <button onClick={ShowForms}>Add Choice +</button>
+                              <button className="add-button" onClick={ShowForms}>+</button>
                             </div>
                           )}
                           <form onSubmit={onSubmit} method="post">
@@ -179,7 +179,7 @@ const Choice = ({ poll, id, token }) => {
                             </ul>
                             <div className="response__div">
                               <input
-                                className="choice__button"
+                                className="submit-button"
                                 type="submit"
                                 value="Submit"
                               />
