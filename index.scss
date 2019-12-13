@@ -45,12 +45,12 @@ $p-font: "Lilita One", cursive;
 }
 .x-button {
   padding: 5px 8px 3px 8px;
-  background-color: rgb(249, 249, 250);
+  background-color: rgb(255, 255, 255);
   color: rgb(68, 68, 68);
   margin: 0.2rem;
   font-size: 1rem;
   font-weight: bold;
-  border: 1px solid rgb(201, 201, 201);
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   &:hover {
@@ -75,7 +75,7 @@ $p-font: "Lilita One", cursive;
     background-color: $p-button-h;
   }
   &:disabled {
-    background: lightgray;
+    background: rgb(207, 205, 205);
   }
   &:focus {
     outline: none;
@@ -149,7 +149,7 @@ li {
   margin: 10px;
   padding: 20px;
 }
-a{
+a {
   text-decoration: none;
 }
 .index {
@@ -190,7 +190,7 @@ label {
     color: #133b79;
   }
 }
-.polls__loading{
+.polls__loading {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -260,16 +260,20 @@ label {
       font-family: $p-font;
       margin-top: 30px;
       padding: 20px;
-      background: rgb(40,89,163);
-      background: rgb(40,89,163);
-      background: linear-gradient(0deg, rgba(40,89,163,1) 26%, rgba(75,185,255,1) 100%, rgba(40,89,163,1) 100%);      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+      background: rgb(145, 178, 233);
+      background: linear-gradient(
+        130deg,
+        rgba(145, 178, 233, 1) 0%,
+        rgba(237, 250, 255, 1) 100%
+      );
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
       -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
       -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
       border-radius: 0.5rem;
       flex: 1 400px;
       position: relative;
       padding-bottom: 60px;
-      color: white;
+      // color: white;
       .form__button {
         position: absolute;
         right: 10px;
@@ -280,9 +284,9 @@ label {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h4{
+        h4 {
           font-size: 1.2rem;
-          font-weight:normal;
+          font-weight: normal;
         }
       }
       .form__container__div {
@@ -291,8 +295,8 @@ label {
         justify-content: center;
         align-self: center;
       }
-      .form__container__list{
-        h6{
+      .form__container__list {
+        h6 {
           margin: 0;
         }
         li {
@@ -322,11 +326,14 @@ label {
     .question__list__div {
       margin-left: 30px;
       margin-top: 30px;
+      .add-button {
+        margin-left: 10px;
+      }
     }
     .question__list__list {
       display: flex;
       flex-wrap: wrap;
-      padding-bottom: 40px;
+      padding-bottom: 60px;
       ul {
         flex: 3 300px;
       }
@@ -363,22 +370,25 @@ label {
 .polls__id {
   max-width: 960px;
   margin: auto;
-  margin-top: 30px ;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .form__choices {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  label{
-    margin-top: 10px;
+  label {
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+  }
+  div {
+    width: 100%;
+    display: flex;
+  }
+  .submit-button {
+    margin: auto;
   }
 }
 .response {
@@ -407,7 +417,7 @@ label {
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
-    .delete{
+    .delete {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -522,7 +532,6 @@ label {
     .header {
       display: flex;
       width: 100%;
-      // justify-content: center;
       align-items: center;
       background: rgb(58, 89, 180);
       background: linear-gradient(
@@ -665,7 +674,7 @@ label {
   #nprogress {
     .spinner {
       top: 10px;
-      right: 90px;
+      right: 10px;
     }
   }
   .result {
