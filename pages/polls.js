@@ -7,11 +7,11 @@ import Router, { withRouter } from "next/router";
 import DetailsPolls from "../components/DetailsPolls";
 import { BASE_URL } from "../paths/url"; // import cookies from 'next-cookies'
 import { withAuthSync } from "../lib/auth";
-
+import { FaPlus } from "react-icons/fa";
 const axios = require("axios");
 
 const Polls = props => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [updateList, setUpdateList] = useState(false);
   const [choiceList, setChoiceList] = useState([]);
@@ -98,7 +98,7 @@ const Polls = props => {
                     onClick={ShowForms}
                     title="Add question"
                   >
-                    +
+                    <FaPlus />
                   </button>
                 </article>
               )}

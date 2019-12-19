@@ -4,13 +4,14 @@ import { BASE_URL } from "../paths/url";
 import Loading from "./Loading";
 import { useState, useEffect } from "react";
 const axios = require("axios");
+import { FaTrashAlt } from 'react-icons/fa';
 
 
 export default props => {
   const [loading, setLoading] = useState(true)
-  const deleteQuestion = async event => {
-    let id = parseInt(event.target.parentNode.parentNode.id);
-    let name = event.target.parentNode.firstChild.text;
+  const deleteQuestion = async (poll) => {
+    let id = parseInt(poll.id);
+    let name = poll.question_text;
     let message;
     let ok = confirm(`Are you sure you want to delete question ${name}`);
     const headers = {
@@ -22,7 +23,6 @@ export default props => {
         headers: headers
       });
       message = await res;
-      // console.log(message);
       if (message.status === 204) {
         props.updateListCallback(true);
       }
@@ -48,8 +48,8 @@ export default props => {
                     {poll.question_text.toUpperCase()}
                   </a>
                 </Link>
-                <button className="delete" title="Delete" onClick={deleteQuestion}>
-                  X
+                <button className="delete" title="Delete" onClick={() => deleteQuestion(poll)}>
+                  <FaTrashAlt />
                 </button>
               </div>
               <div>

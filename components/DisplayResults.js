@@ -1,6 +1,7 @@
 import React from "react";
 import Chart from "react-google-charts";
 
+
 export default ({ questions }) => (
   <article>
     <div className="result">
@@ -10,20 +11,20 @@ export default ({ questions }) => (
       <div>
         <ul className="displayresult__">
           {questions &&
-            questions.choices.sort((a, b) => b.votes - a.votes).map(res => (
-              <li key={res.id}>
-                <p>
-                  <b>{res.choice_text}</b>: <i>{res.votes}</i> votes
-                </p>
-              </li>
-            ))}
+            questions.choices
+              .sort((a, b) => b.votes - a.votes)
+              .map(res => (
+                <li key={res.id}>
+                  <p>
+                    <b>{res.choice_text}</b>: <i>{res.votes}</i> votes
+                  </p>
+                </li>
+              ))}
         </ul>
       </div>
     </div>
   </article>
 );
-
-
 
 const ResponseChart = ({ questions }) => {
   const data = questions.choices.map(choice => [
@@ -70,15 +71,13 @@ const ResponseChart = ({ questions }) => {
     fontName: "Roboto"
   };
   return (
-    <div className="App">
+    <div className="chart">
       <Chart
         chartType="PieChart"
         data={[["Choice", "Vote"], ...data]}
         loader={<div>Loading Chart</div>}
         options={pieOptions}
         graph_id="PieChart"
-        width={"400px"}
-        height={"400px"}
         legend_toggle
       />
     </div>

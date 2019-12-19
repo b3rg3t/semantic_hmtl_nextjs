@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import Layout from "../../components/layoutFolder/Layout";
 import { cats } from "../../components/dummyData";
-import Link from 'next/link';
-const Post = (props) => {
-  const router = useRouter();
+import Link from "next/link";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
+const Post = props => {
+  const router = useRouter();
   const FilterCats = () => {
     let cat = cats.filter(c => c.title === router.query.id);
     console.log(cat);
@@ -23,12 +24,12 @@ const Post = (props) => {
   return (
     <Layout token={props.token}>
       <Link href="/articles">
-        <a>{`<< Back`}</a>
+        <a><FaArrowCircleLeft/>Back</a>
       </Link>
       <h1>{router.query.id}</h1>
       <FilterCats />
     </Layout>
   );
-}
+};
 
 export default Post;

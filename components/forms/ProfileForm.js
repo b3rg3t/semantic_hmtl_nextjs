@@ -15,7 +15,7 @@ const ProfileForm = props => {
           <label>
             Last name:
             <input type="text" value={user.last_name} onChange={() => setUser()} placeholder="Doe.."/>
-          </label>
+          </label>    
           <label>
             Location:
             <input type="text" value={user.profile ? user.profile.location : ""} onChange={() => setUser()} placeholder="ex. Stockholm"/>

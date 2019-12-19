@@ -3,14 +3,20 @@ import Layout from "../../components/layoutFolder/Layout";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import Head from "next/head";
-// import BadData from "../../components/BadData";
+import Loading from "../../components/Loading.js"
 import ChoiceForm from "../../components/forms/ChoiceForm";
 import DisplayTotalVotes from "../../components/DisplayTotalVotes";
 import DisplayResults from "../../components/DisplayResults";
 import { AddChoices } from "../../components/forms/AddQuestion";
 import { BASE_URL } from "../../paths/url";
 import { withAuthSync } from "../../lib/auth";
-import Router from "next/router"
+import Router from "next/router";
+import {
+  FaArrowCircleLeft,
+  FaPlus,
+  FaTimes,
+  FaCheckCircle
+} from "react-icons/fa";
 
 const axios = require("axios");
 
@@ -121,7 +127,10 @@ const Choice = ({ poll, id, token }) => {
           <main>
             <section className="polls__id">
               <Link href="/polls">
-                <a className="submit-button">{`< Back`}</a>
+                <a className="submit-button">
+                  <FaArrowCircleLeft className="back__button__arrow" />
+                  Back
+                </a>
               </Link>
               {questions ? (
                 <div className="response">
@@ -142,11 +151,19 @@ const Choice = ({ poll, id, token }) => {
                         <h3 className="error">{`Your vote didn't submit!! status: ${status}`}</h3>
                       ) : null}
                       {status === 200 ? (
-                        <h3 className="ok">
-                          Vote for <b className="voted">{voteVoted[0]}</b> was
-                          submitted to question {questions.question_text}
-                          {` with status: ${status} = OK`}
-                        </h3>
+                        <div className="statusOK">
+                          <h4>
+                            <FaCheckCircle />
+                          </h4>
+                          <p className="ok">
+                            Voted for:
+                            <br />
+                            <b className="voted">{voteVoted[0]}</b>
+                            <br />
+                            Question: <br />
+                            <b>{questions.question_text}</b>
+                          </p>
+                        </div>
                       ) : (
                         <div className="response">
                           <h2>{questions.question_text}</h2>
@@ -157,34 +174,26 @@ const Choice = ({ poll, id, token }) => {
                                 choice={choice}
                                 handleChoiceSubmit={submitChoice}
                               />
-                              <button
-                                className="delete"
-                                onClick={ShowForms}
-                              >
-                                X
+                              <button className="delete" onClick={ShowForms}>
+                                <FaTimes />
                               </button>
                             </div>
                           ) : (
-                            <div className="choice__div">
-                              <button className="add-button" onClick={ShowForms}>+</button>
+                            <div className="choice__div no__border">
+                              <button
+                                className="add-button"
+                                onClick={ShowForms}
+                              >
+                                <FaPlus />
+                              </button>
                             </div>
                           )}
-                          <form onSubmit={onSubmit} method="post">
-                            <ul>
-                              <ChoiceForm
-                                questions={questions}
-                                handleChange={handleChange}
-                                vote={vote}
-                              />
-                            </ul>
-                            <div className="response__div">
-                              <input
-                                className="submit-button"
-                                type="submit"
-                                value="Submit"
-                              />
-                            </div>
-                          </form>
+                          <ChoiceForm
+                            questions={questions}
+                            handleChange={handleChange}
+                            onSubmit={onSubmit}
+                            vote={vote}
+                          />
                         </div>
                       )}
                       {showRes ? (
@@ -197,18 +206,14 @@ const Choice = ({ poll, id, token }) => {
                   )}
                 </div>
               ) : (
-                "Loading..."
+                <Loading loading={true}/>
               )}
             </section>
           </main>
         </>
       ) : (
-        <div>
-          {" "}
-          <Link href="/polls">
-            <a className="back__button">{`< Back`}</a>
-          </Link>
-          <p>No poll with the given id</p>
+        <div className="polls__id">
+          <Loading loading={true}/>
         </div>
       )}
     </Layout>
