@@ -22,7 +22,7 @@ const Layout = ({ children, title, token }) => (
       />
 
       <meta
-        itemprop="description"
+        itemProp="description"
         content="This is the best Cat site ever, use this if you love cats. Ask questions about cats."
       />
 

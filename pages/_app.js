@@ -5,6 +5,7 @@ import nprogress from "nprogress";
 import Router from "next/router";
 import "nprogress/nprogress.css";
 import { IconContext } from "react-icons/lib";
+import { verifyToken } from "../lib/auth";
 
 function handleRouteChangeStart() {
   nprogress.start();
@@ -30,20 +31,21 @@ class MyApp extends App {
     // calls page's `getInitialProps` and fills `appProps.pageProps`
 
     const token = cookies(appContext.ctx).token || "";
-
+    const verifiedToken = await verifyToken(token)
+    // console.log(verifiedToken)
     const appProps = await App.getInitialProps(appContext, token);
     // if (appContext.Component.getInitialProps) {
     //   pageProps = await appContext.Component.getInitialProps(appContext, token);
     // }
-    return { ...appProps, token: cookies(appContext.ctx).token || "" };
+    return { ...appProps, token: verifiedToken ? cookies(appContext.ctx).token || "" : false };
   }
 
   render() {
     const { Component, pageProps, token } = this.props;
     return (
-      <IconContext.Provider value={{ className: "react-icons" }}>
-        <Component {...pageProps} token={token} />
-      </IconContext.Provider>
+        <IconContext.Provider value={{ className: "react-icons" }}>
+          <Component {...pageProps} token={token} />
+        </IconContext.Provider>
     );
   }
 }

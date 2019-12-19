@@ -8,7 +8,6 @@ const Post = props => {
   const router = useRouter();
   const FilterCats = () => {
     let cat = cats.filter(c => c.title === router.query.id);
-    console.log(cat);
     return (
       <ul>
         {cat.map((k, index) => (

@@ -29,13 +29,14 @@ export default props => {
     }
   };
   useEffect(() => {
-    console.log("this tan")
-    setTimeout(setLoadingTimer, 3000)
+    const loadingTimer = setTimeout(setLoadingTimer, 3000)
+    return () => clearTimeout(loadingTimer)
   }, []);
 
   const setLoadingTimer = () => {
     setLoading(false);
   }
+ 
   return (
     <>
       {props.questions.length > 0 ? (

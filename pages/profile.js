@@ -28,7 +28,6 @@ const ProfilePage = props => (
 );
 
 ProfilePage.getInitialProps = async (ctx, token) => {
-  console.log(token);
   let user;
   try {
     const { data } = await axios.get(`${BASE_URL}auth/users/me/`, {

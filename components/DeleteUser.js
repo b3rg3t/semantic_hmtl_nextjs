@@ -13,9 +13,6 @@ export const DeleteUser = props => {
 
   const DeleteUserWithId = async event => {
     event.preventDefault();
-    // console.log("delete me form");
-
-    console.log(props.token);
     let res;
     const data = { current_password: password };
     const headers = {
@@ -23,8 +20,6 @@ export const DeleteUser = props => {
       Authorization: `Bearer ${props.token}`
     };
     setLoading(true);
-    console.log(data);
-    console.log(password);
     try {
       const response = await axios.delete(`${BASE_URL}auth/users/me/`, {
         headers: headers,
