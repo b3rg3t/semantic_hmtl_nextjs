@@ -1,14 +1,22 @@
+import { DeleteUser } from "../components/DeleteUser";
+import ProfileForm from "../components/forms/ProfileForm";
 export const DisplayUser = props => (
   <>
     {props.user && (
       <>
         <div className="header">
-          <h1>{props.user.username}</h1>
+          <div className="header__left">
+            <h1>{props.user.username}</h1>
+          </div>
+          <div className="header__right">
+            <ProfileForm user={props.user} token={props.token} />
+            <DeleteUser user={props.user} token={props.token} />
+          </div>
         </div>
         <div className="flex-container">
-        <div className="img">
-            <img src="../images/cat1.jpg" alt="profile pix"/>
-        </div>
+          <div className="img">
+            <img src="../images/cat1.jpg" alt="profile pix" />
+          </div>
           <div className="columns fname">
             <div>
               <p>First name:</p>
@@ -33,28 +41,27 @@ export const DisplayUser = props => (
               <p>{props.user.email}</p>
             </div>
           </div>
-          {props.user.profile ? (
-            <div className="columns location">
-              <div>
-                <p>Location:</p>
-              </div>
-              <div>
-                <p>{props.user.profile.location}</p>
-              </div>
+
+          <div className="columns location">
+            <div>
+              <p>Location:</p>
             </div>
-          ) : null}
-          
-            <div className="columns description">
-              <>
-                <p>Description:</p>
-                <div>
+            <div>
+              {props.user.profile ? <p>{props.user.profile.location}</p> : ""}
+            </div>
+          </div>
+
+          <div className="columns description">
+            <>
+              <p>Description:</p>
+              <div>
                 {props.user.profile ? (
                   <p>{props.user.profile.description}</p>
-                  ) : null}
-                </div>
-              </>
-            </div>
-          
+                ) : null}
+              </div>
+            </>
+          </div>
+
           {props.user ? (
             <div className="columns date">
               <div>

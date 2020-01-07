@@ -1,7 +1,8 @@
 import Header from "../headerFolder/Header";
 import Footer from "../footerFolder/Footer";
 import Head from "next/head";
-import "../../index.scss"
+import "../../index.scss";
+import "../layoutFolder/layout.scss";
 
 const Layout = ({ children, title, token }) => (
   <div className="wrapper">
@@ -32,10 +33,9 @@ const Layout = ({ children, title, token }) => (
       />
     </Head>
     <Header token={token} />
-    {/* <h1>{title}</h1> */}
     {children}
     <Footer />
-    <style jsx>{`
+    {/* <style jsx>{`
       .wrapper {
         display: flex;
         justify-content: flex-start;
@@ -43,7 +43,7 @@ const Layout = ({ children, title, token }) => (
         flex-direction: column;
         height: 100vh;
       }
-    `}</style>
+    `}</style> */}
   </div>
 );
 

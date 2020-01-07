@@ -1,16 +1,8 @@
-@import "../headerFolder/header.scss";
-@import "../articlesFolder/printArt.scss";
-
 .wrapper {
+  height: 100vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 
-// @media screen and (max-width: 600px) {
-//   .wrapper {
-//     margin-bottom: 20px;
-//   }
-// }

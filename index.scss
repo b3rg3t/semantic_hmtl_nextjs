@@ -19,6 +19,23 @@ $p-button-h: #55a6f8;
 $p-font: "Lilita One", cursive;
 
 //Buttons
+.settings-button {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 6px 7px 4px 7px;
+  cursor: pointer;
+  background-color: $primary-background;
+  &:hover {
+    background-color: $p-button;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    background-color: lightgray;
+  }
+}
 .submit-button {
   color: white;
   background-color: $p-button;
@@ -45,7 +62,7 @@ $p-font: "Lilita One", cursive;
 }
 .x-button {
   padding: 7px 8px 4px 8px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   color: rgb(68, 68, 68);
   margin: 0.2rem;
   font-size: 1rem;
@@ -54,8 +71,7 @@ $p-font: "Lilita One", cursive;
   border-radius: 50%;
   cursor: pointer;
   &:hover {
-    color: rgb(243, 242, 242);
-    background: gray;
+    color: rgb(134, 133, 133);
   }
   &:focus {
     outline: none;
@@ -291,7 +307,7 @@ label {
       flex: 1 400px;
       position: relative;
       padding-bottom: 60px;
-      .form__container__wrapper{
+      .form__container__wrapper {
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -314,10 +330,10 @@ label {
           font-size: 1.2rem;
           font-weight: normal;
         }
-        input{
+        input {
           width: 100%;
         }
-        .form__question__button{
+        .form__question__button {
           display: flex;
           width: 100%;
           justify-content: center;
@@ -417,8 +433,8 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .submit-button{
-    svg{
+  .submit-button {
+    svg {
       padding-top: 8px;
     }
   }
@@ -438,8 +454,8 @@ label {
     display: flex;
     width: 100%;
   }
-  .add-button{
-    margin: auto; 
+  .add-button {
+    margin: auto;
   }
   .submit-button {
     margin: auto;
@@ -450,7 +466,7 @@ label {
   font-family: $p-font;
   font-size: 1.6rem;
   margin-bottom: 30px;
-  h2{
+  h2 {
     margin: 10px 0;
   }
   .response__div {
@@ -464,7 +480,7 @@ label {
       margin: auto;
       li {
         padding: 10px;
-        margin:10px auto;
+        margin: 10px auto;
         min-width: 200px;
         box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
         -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
@@ -472,8 +488,8 @@ label {
       }
     }
   }
-  .no__border{
-    box-shadow: none !important; 
+  .no__border {
+    box-shadow: none !important;
   }
   .choice__div {
     position: relative;
@@ -610,6 +626,7 @@ label {
       display: flex;
       width: 100%;
       align-items: center;
+      justify-content: space-between;
       background: rgb(58, 89, 180);
       background: linear-gradient(
         315deg,
@@ -618,54 +635,67 @@ label {
         rgba(58, 89, 180, 1) 100%
       );
       height: 80px;
-      color: white;
+
       h1 {
+        color: white;
         margin: 0 10px;
+      }
+      // .header__left {
+      // }
+      .header__right {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        button {
+          margin-right: 10px;
+        }
       }
     }
     .flex-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-      grid-gap: 10px;
+      grid-gap: 5px;
       border: 1px solid lightgray;
-      padding: 0 10px 10px 10px;
+      padding: 10px 10px 10px 10px;
       width: 100%;
-      .columns{
-        border-radius: 10px;
+      margin-bottom: 70px;
+      background-color: #d8e8ff;
+      .columns {
         padding: 10px;
-        border: 1px solid rgba(128, 128, 128, 0.322);
+        background-color: $third-background;
       }
-      .img{
-        object-fit: contain;
-        img{
+      .img {
+        img {
           max-width: 100%;
+          margin-bottom: -4px;
         }
-        grid-area: 1/1/3/2;
+        grid-area: 1/1/3/3;
         align-self: center;
         justify-self: center;
       }
-      .fname { 
-        grid-column: 2;
-        background-color: chocolate;
+      .fname {
+        grid-column: 3;
       }
-      .lname{
-        background-color: darkgreen;
+      .lname {
+        display: block;
       }
-      .email{
-        background-color: darkmagenta;
-      }
-      .location{
-        grid-column: 2/3;
-        background-color: darkred;
-      }
-      .description{
-        grid-column: 3/5;
-        background-color: cadetblue;
-      }
-      .date{
+      .email {
         grid-column: 3/4;
-        background-color: deeppink;
+        display: block;
+      }
+      .location {
+        display: block;
+      }
+      .description {
+        grid-column: 1/5;
+      }
+      .date {
+        grid-column: 1/5;
+        display: grid;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
@@ -694,7 +724,7 @@ label {
     .x {
       position: absolute;
       top: 10px;
-      right: 10px;
+      right: 0px;
       padding-bottom: 3px !important;
     }
     form {
@@ -722,16 +752,22 @@ label {
   }
 }
 .form {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(128, 128, 128, 0.377);
+  z-index: 90;
   .form__profile {
     border: 1px solid rgba(0, 0, 0, 0.116);
-    position: absolute;
+    position: relative;
     background: rgb(216, 232, 255);
-    top: 130px;
     border-radius: 10px;
-    margin: auto;
+    z-index: 100;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
@@ -749,6 +785,9 @@ label {
       &:hover {
         background-color: $p-button-h;
         color: rgb(241, 238, 238);
+      }
+      &:focus{
+        outline: none;
       }
     }
     label {
@@ -771,6 +810,11 @@ label {
         border-radius: 10px;
         border: 1px solid rgba(0, 0, 0, 0.116);
         padding: 6px;
+        &:focus {
+          outline: none;
+          border: 1px solid $p-button-h;
+          border-radius: 10px;
+        }
       }
     }
   }
@@ -798,18 +842,18 @@ label {
     margin: auto;
     margin-top: 10px;
     .article__cat__box {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        margin: auto;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: auto;
       .img {
         max-width: 100%;
         border-radius: 0.5rem;
       }
-      .article__cat__box__div{
-          margin-bottom: 1rem;
+      .article__cat__box__div {
+        margin-bottom: 1rem;
       }
-      button{
+      button {
         margin: auto;
       }
     }
@@ -820,13 +864,12 @@ label {
   max-width: 100%;
   border-radius: 0.5rem;
 }
-figure{
-    margin: 0;
+figure {
+  margin: 0;
 }
 
 header {
-  
-  z-index: 999;
+  z-index: 90;
   -webkit-box-shadow: 0px 12px 10px -14px rgba(101, 101, 101, 0.44);
   box-shadow: 0px 12px 10px -14px rgba(101, 101, 101, 0.44);
   width: 100%;
@@ -866,6 +909,9 @@ header {
       &:hover {
         background-color: $p-button-h;
       }
+      &:focus{
+        outline: none;
+      }
     }
   }
   .header__ul {
@@ -896,23 +942,25 @@ header {
   }
 }
 footer {
-  z-index: 999;
-  position: fixed;
-  -webkit-box-shadow: 0px -12px 10px -14px rgba(101,101,101,0.44); 
-  box-shadow: 0px -12px 10px -14px rgba(101,101,101,0.44);
+  z-index: 50;
+  position: relative;
+  margin-top:auto; 
+  // bottom: 0;
+  -webkit-box-shadow: 0px -12px 10px -14px rgba(101, 101, 101, 0.44);
+  box-shadow: 0px -12px 10px -14px rgba(101, 101, 101, 0.44);
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   background: white;
-  p{
-    color: $primary-background
+  p {
+    color: $primary-background;
   }
 }
-.mobile__nav{
+.mobile__nav {
   display: none;
 }
-.bm-item{
+.bm-item {
   &:focus {
     outline: none;
   }
@@ -965,16 +1013,55 @@ footer {
   .chart {
     max-width: 300px;
   }
-  .form__container__div{
+  .form__container__div {
     width: 90% !important;
   }
   footer {
     display: none;
   }
-  .mobile__nav{
+  .mobile__nav {
     display: block;
   }
-  .desktop__nav{
+  .desktop__nav {
     display: none !important;
+  }
+  .flex-container {
+    .columns {
+      padding: 10px;
+      background-color: $third-background;
+    }
+    .img {
+      img {
+        max-width: 100%;
+        margin-bottom: -4px;
+      }
+      grid-area: 1/1/4/5 !important;
+      align-self: center;
+      justify-self: center;
+    }
+    .fname {
+      grid-column: 1/3 !important;
+    }
+    .lname {
+      grid-column: 3/5 !important;
+      display: block;
+    }
+    .email {
+      grid-column: 1/3 !important;
+      display: block;
+    }
+    .location {
+      grid-column: 3/5 !important;
+      display: block;
+    }
+    .description {
+      grid-column: 1/5;
+    }
+    .date {
+      grid-column: 1/5;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

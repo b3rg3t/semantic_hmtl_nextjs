@@ -22,10 +22,10 @@ var styles = {
   bmCrossButton: {
     height: "24px",
     width: "24px",
-    color: "#373a47"
+    color: "red"
   },
   bmCross: {
-    background: "#bdc3c7"
+    background: "#bdc3c7",
   },
   bmMenuWrap: {
     position: "fixed",
@@ -162,7 +162,7 @@ const Header = props => {
 
         <style jsx>{`
           header {
-            z-index: 999;
+            z-index: 90;
             -webkit-box-shadow: 0px 12px 10px -14px rgba(101, 101, 101, 0.44);
             box-shadow: 0px 12px 10px -14px rgba(101, 101, 101, 0.44);
             width: 100%;
