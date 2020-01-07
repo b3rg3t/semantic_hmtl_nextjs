@@ -3,7 +3,7 @@ import Router from "next/router";
 import { useState } from "react";
 import Loading from "./Loading";
 import { LogOut } from "../lib/auth";
-import {FaTimes} from "react-icons/fa"
+import { FaTimes } from "react-icons/fa";
 const axios = require("axios");
 
 export const DeleteUser = props => {
@@ -29,14 +29,13 @@ export const DeleteUser = props => {
       console.log(res);
       if (res.status === 204) {
         setLoading(false);
-        LogOut()
+        LogOut();
         Router.push("/login");
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      // console.log(error);
     }
-    //current_password
   };
   const ShowDeleteForm = () => {
     showInput ? setShowInput(false) : setShowInput(true);
@@ -55,13 +54,13 @@ export const DeleteUser = props => {
         <div id="close" className="delete__popup" onClick={closing}>
           <div className="delete__form">
             <button className="delete x" onClick={ShowDeleteForm}>
-            <FaTimes />
+              <FaTimes />
             </button>
             <h4>Are you sure you want to delete your account?</h4>
             <form onSubmit={DeleteUserWithId}>
               <label>
-                Password:
                 <input
+                  aria-label="Password"
                   type="password"
                   onChange={event => setPassword(event.target.value)}
                   value={password}

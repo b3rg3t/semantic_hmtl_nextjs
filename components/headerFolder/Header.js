@@ -245,8 +245,4 @@ const Header = props => {
       </header>
   );
 };
-
-// Header.getInitialProps = async (context, token) =>{
-//   console.log(token)
-// }
 export default Header;

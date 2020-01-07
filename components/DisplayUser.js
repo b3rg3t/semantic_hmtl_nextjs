@@ -6,7 +6,10 @@ export const DisplayUser = props => (
           <h1>{props.user.username}</h1>
         </div>
         <div className="flex-container">
-          <div className="columns">
+        <div className="img">
+            <img src="../images/cat1.jpg" alt="profile pix"/>
+        </div>
+          <div className="columns fname">
             <div>
               <p>First name:</p>
             </div>
@@ -14,7 +17,7 @@ export const DisplayUser = props => (
               <p>{props.user.first_name}</p>
             </div>
           </div>
-          <div className="columns">
+          <div className="columns lname">
             <div>
               <p>Last name:</p>
             </div>
@@ -22,7 +25,7 @@ export const DisplayUser = props => (
               <p>{props.user.last_name}</p>
             </div>
           </div>
-          <div className="columns">
+          <div className="columns email">
             <div>
               <p>Email:</p>
             </div>
@@ -31,7 +34,7 @@ export const DisplayUser = props => (
             </div>
           </div>
           {props.user.profile ? (
-            <div className="columns">
+            <div className="columns location">
               <div>
                 <p>Location:</p>
               </div>
@@ -40,18 +43,20 @@ export const DisplayUser = props => (
               </div>
             </div>
           ) : null}
-          {props.user.profile ? (
+          
             <div className="columns description">
               <>
                 <p>Description:</p>
                 <div>
+                {props.user.profile ? (
                   <p>{props.user.profile.description}</p>
+                  ) : null}
                 </div>
               </>
             </div>
-          ) : null}
+          
           {props.user ? (
-            <div className="columns">
+            <div className="columns date">
               <div>
                 <p>Created:</p>
               </div>

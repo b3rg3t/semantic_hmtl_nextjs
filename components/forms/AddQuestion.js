@@ -33,7 +33,7 @@ const FormQuestion = props => {
         console.log("Error");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

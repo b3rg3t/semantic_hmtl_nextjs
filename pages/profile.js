@@ -20,7 +20,7 @@ const ProfilePage = props => (
           <DeleteUser user={props.user} token={props.token} />
         </div>
         <div className="form">
-          {/* <ProfileForm user={props.user} /> */}
+          <ProfileForm user={props.user} />
         </div>
       </section>
     </main>
@@ -36,7 +36,7 @@ ProfilePage.getInitialProps = async (ctx, token) => {
     user = await data;
     console.log(user);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
   return { user: user, token: token };
 };

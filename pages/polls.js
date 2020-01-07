@@ -47,7 +47,7 @@ const Polls = props => {
           setUpdateList(false);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     updateView();
@@ -128,7 +128,7 @@ Polls.getInitialProps = async (context, token) => {
     });
     polls = await res.data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     if (typeof window === "undefined") {
       context.res.writeHead(302, { Location: "/login" });
       context.res.end();

@@ -32,7 +32,6 @@ class MyApp extends App {
 
     const token = cookies(appContext.ctx).token || "";
     const verifiedToken = await verifyToken(token)
-    // console.log(verifiedToken)
     const appProps = await App.getInitialProps(appContext, token);
     // if (appContext.Component.getInitialProps) {
     //   pageProps = await appContext.Component.getInitialProps(appContext, token);

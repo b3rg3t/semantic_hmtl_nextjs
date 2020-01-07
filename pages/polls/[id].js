@@ -44,7 +44,7 @@ const Choice = ({ poll, id, token }) => {
         polls = await response.data;
         return setQuestions(polls);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     if (runEffect) {
@@ -83,7 +83,7 @@ const Choice = ({ poll, id, token }) => {
         setStatus(resStatus);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setStatus(error.response.status);
     }
   };
@@ -114,7 +114,7 @@ const Choice = ({ poll, id, token }) => {
         setRunEffect(true);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   return (
@@ -229,7 +229,7 @@ Choice.getInitialProps = async (context, token) => {
     });
     poll = await response.data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     if (typeof window === "undefined") {
       context.res.writeHead(302, { Location: "/login" });
       context.res.end();

@@ -31,8 +31,6 @@ const ResponseChart = ({ questions }) => {
     choice.choice_text,
     choice.votes
   ]);
-
-  // console.log(data);
   const pieOptions = {
     title: "",
     is3D: true,
