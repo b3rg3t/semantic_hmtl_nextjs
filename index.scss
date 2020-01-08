@@ -657,7 +657,7 @@ label {
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       grid-gap: 3px;
-      padding: 2px 0px 2px 0px;
+      padding: 0px 0px 0px 0px;
       width: 100%;
       margin-bottom: 70px;
       background-color: #c4e0fa;
@@ -959,7 +959,6 @@ footer {
   z-index: 50;
   position: relative;
   margin-top:auto; 
-  // bottom: 0;
   -webkit-box-shadow: 0px -12px 10px -14px rgba(101, 101, 101, 0.44);
   box-shadow: 0px -12px 10px -14px rgba(101, 101, 101, 0.44);
   bottom: 0;

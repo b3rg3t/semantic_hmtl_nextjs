@@ -7,13 +7,18 @@ const UserCredentials = props => {
   const onSubmit = e => {
     e.preventDefault();
     console.log("On submit");
-    props.onSubmitCallback(password, username);
+    props.onSubmitCallback(e, username, password);
   };
   return (
     <>
       <div className="form">
         <form className="form__profile">
-          <button className="x-button close-profile-form" type="button">
+          <button
+            type="button"
+            onClick={props.showCredentialCallback}
+            className="x-button close-profile-form"
+            type="button"
+          >
             <FaTimes />
           </button>
           <h3>Input user credentials</h3>
@@ -35,9 +40,14 @@ const UserCredentials = props => {
               placeholder="Password"
             />
           </label>
-          <button className="profile-form-submit" onClick={onSubmit}>
-            Submit
-          </button>
+          <div>
+            <button className="profile-form-submit" onClick={onSubmit}>
+              Submit
+            </button>
+            <button type="button" className="profile-form-submit" onClick={props.showCredentialCallback}>
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </>

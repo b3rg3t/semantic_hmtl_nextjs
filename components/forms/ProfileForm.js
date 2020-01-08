@@ -17,6 +17,7 @@ const ProfileForm = props => {
   );
 
   const [showProfileForm, setShowProfileForm] = useState(false);
+  const [showCredentialsForm, setShowCredentialFrom] = useState(false);
   const ShowForm = () => {
     showProfileForm ? setShowProfileForm(false) : setShowProfileForm(true);
   };
@@ -54,9 +55,12 @@ const ProfileForm = props => {
     }
     ShowForm();
   };
-const showUserCredentials = () =>{
-  showProfileForm ? setShowProfileForm(false) : setShowProfileForm(true);
-}
+  const showUserCredentials = () => {
+    console.log("this ran ");
+    showCredentialsForm
+      ? setShowCredentialFrom(false)
+      : setShowCredentialFrom(true);
+  };
   return (
     <>
       {showProfileForm && (
@@ -118,7 +122,11 @@ const showUserCredentials = () =>{
                 placeholder="Write a descripton.."
               />
             </label>
-            <button className="profile-form-submit" onClick={onSubmit}>
+            <button
+              className="profile-form-submit"
+              type="button"
+              onClick={showUserCredentials}
+            >
               Save
             </button>
           </form>
@@ -131,7 +139,12 @@ const showUserCredentials = () =>{
       >
         <FaCog />
       </button>
-      {/* <UserCredentials onSubmitCallback={onSubmit} /> */}
+      {showCredentialsForm ? (
+        <UserCredentials
+          onSubmitCallback={onSubmit}
+          showCredentialCallback={showUserCredentials}
+        />
+      ) : null}
     </>
   );
 };
