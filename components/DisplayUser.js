@@ -64,12 +64,8 @@ export const DisplayUser = props => (
 
           {props.user ? (
             <div className="columns date">
-              <div>
-                <p>Created:</p>
-              </div>
-              <div>
-                <p>{props.user.date_joined.substring(0, 10)}</p>
-              </div>
+              <p>Created: </p>
+              <p>{props.user.date_joined.substring(0, 10)}</p>
             </div>
           ) : null}
         </div>

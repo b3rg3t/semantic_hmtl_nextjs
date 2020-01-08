@@ -35,7 +35,7 @@ const Layout = ({ children, title, token }) => (
     <Header token={token} />
     {children}
     <Footer />
-    {/* <style jsx>{`
+    <style jsx>{`
       .wrapper {
         display: flex;
         justify-content: flex-start;
@@ -43,7 +43,7 @@ const Layout = ({ children, title, token }) => (
         flex-direction: column;
         height: 100vh;
       }
-    `}</style> */}
+    `}</style>
   </div>
 );
 

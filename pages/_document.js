@@ -11,7 +11,7 @@ class MyDocument extends Document {
         <html lang="en">
           <Head>
           <meta name="theme-color" content="#2859a3"/>
-          {/* <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script> */}
+          <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
           </Head>
           <body>
             <Main />

@@ -16,7 +16,7 @@ const ProfilePage = props => (
     <main>
       <section className="profile">
         <div className="profile__div">
-          <DisplayUser user={props.user} />
+          <DisplayUser user={props.user} token={props.token}/>
         </div>
       </section>
     </main>

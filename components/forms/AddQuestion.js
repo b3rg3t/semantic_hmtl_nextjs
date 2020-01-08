@@ -20,6 +20,7 @@ const FormQuestion = props => {
       pub_date: date,
       choices: props.choiceList
     };
+    console.log(props.token)
     try {
       const postChoice = await axios.post(`${BASE_URL}polls/questions/`, data, {
         headers: headers
