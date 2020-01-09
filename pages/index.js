@@ -14,7 +14,6 @@ const Image = ({ src, width, height, className, alt }) => {
   return isAmp ? (
     <amp-img
       className={className}
-      class={className}
       src={src}
       width={width}
       height={height}
@@ -58,8 +57,8 @@ const Index = props => {
             <Image
               className="catimg"
               src="../images/cat1.jpg"
-              width="600"
-              height="400"
+              width="800"
+              height="550"
               alt="cat1 behind fence"
             />
             <h1 className="title">"THE MYSTIC CAT SITE"</h1>
@@ -96,7 +95,7 @@ const Index = props => {
               </ul>
             </amp-sidebar>
             <span>
-              <DisplayBeer />
+              
               <div className="buttons">
                 <button
                   onClick={() => setMySite(mySite + 1)}
@@ -104,7 +103,7 @@ const Index = props => {
                 >
                   +
                 </button>
-
+                <DisplayBeer />
                 <button
                   onClick={() => setMySite(mySite - 1)}
                   on="tap:AMP.setState({foo: foo - 1  })"
@@ -135,7 +134,7 @@ const Index = props => {
         </main>
         <style jsx>{`
           h1 {
-            margin-bottom: 5px;
+            margin: 0;
             color: green;
             position: absolute;
             font-family: "Lilita One", cursive;
@@ -145,19 +144,14 @@ const Index = props => {
           }
           p {
             font-size: 18px;
-            line-height: 30px;
-            margin-top: 30px;
-          }
-          .title {
           }
           .catimg {
-            height: 100vh;
-            display: none;
-            color: green;
-            layout: responsive;
+            max-width: 100% !important; 
           }
           .buttons {
             display: flex;
+            justify-content: center;
+
           }
           .social-share {
             display: flex;

@@ -23,7 +23,7 @@ const Post = props => {
   return (
     <Layout token={props.token}>
       <Link href="/articles">
-        <a><FaArrowCircleLeft/>Back</a>
+        <a className="submit-button"><FaArrowCircleLeft/>Back</a>
       </Link>
       <h1>{router.query.id}</h1>
       <FilterCats />

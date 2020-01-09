@@ -112,7 +112,7 @@ export const AddChoices = props => {
   return (
     <form onSubmit={props.handleChoiceSubmit} className="form__choices">
       <label>
-        Choice:
+        Add Choice:
         <input
           type="text"
           value={props.choice}

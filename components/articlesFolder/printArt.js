@@ -15,7 +15,7 @@ const PrintArt = () => (
           <article className="article__cat__box">
             <h3>{cat.title}</h3>
             <figure>
-              <img className="img" src={cat.pic} alt={cat.alt} height="200px" />
+              <img className="img" src={cat.pic} alt={cat.alt} />
               <figcaption>{cat.name}</figcaption>
             </figure>
             <div className="article__cat__box__div">
@@ -27,7 +27,7 @@ const PrintArt = () => (
               <hr />
               <em>Written by: {cat.author}</em>
             </div>
-            <div>
+            <div className="link__box">
               <PostLink id={cat.title} />
             </div>
           </article>
