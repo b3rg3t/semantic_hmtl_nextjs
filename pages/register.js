@@ -8,6 +8,7 @@ const Register = () => (
     <title>Register</title> 
     </Head>
     <main>
+    <h1 style={{textAlign: "center"}}>Sign up</h1>
       <section className="login">
       <RegisterForm />
       </section>

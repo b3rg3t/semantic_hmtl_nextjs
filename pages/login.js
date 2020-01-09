@@ -7,7 +7,8 @@ const LogIn = () => (
     <Head>
     <title>Log in</title> 
     </Head>
-    <main>
+    <main> 
+      <h1 style={{textAlign: "center"}}>Sign in</h1>
       <section className="login">
         <LogInForm />
       </section>
