@@ -48,15 +48,21 @@ const ProfileForm = props => {
       const postProfile = await axios.patch(`${BASE_URL}auth/users/me/`, data, {
         headers: headers
       });
-      response = await postProfile.data;
+      response = await postProfile;
       console.log(response);
+      if (response.status === 200) {
+        console.log("success");
+        props.updateProfile();
+        showUserCredentials();
+      } else {
+        console.log("Something went wrong" + response.status);
+      }
     } catch (error) {
       console.log(error);
     }
     ShowForm();
   };
   const showUserCredentials = () => {
-    console.log("this ran ");
     showCredentialsForm
       ? setShowCredentialFrom(false)
       : setShowCredentialFrom(true);
@@ -122,13 +128,22 @@ const ProfileForm = props => {
                 placeholder="Write a descripton.."
               />
             </label>
-            <button
-              className="profile-form-submit"
-              type="button"
-              onClick={showUserCredentials}
-            >
-              Save
-            </button>
+            <div className="form__profile__buttons">
+              <button
+                className="profile-form-submit"
+                type="button"
+                onClick={showUserCredentials}
+              >
+                Save
+              </button>
+              <button
+                className="profile-form-submit"
+                type="button"
+                onClick={ShowForm}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       )}

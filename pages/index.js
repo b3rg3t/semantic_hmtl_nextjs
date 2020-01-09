@@ -37,6 +37,16 @@ const Number = ({ mySite }) => {
 };
 const Index = props => {
   const [mySite, setMySite] = useState(0);
+  const DisplayBeer = () => {
+    return (
+      <>
+        <div style={{ display: "flex" }}>
+          <Number mySite={mySite} />
+          <FaBeer />
+        </div>
+      </>
+    );
+  };
   return (
     <>
       <Layout title="Home Page" token={props.token}>
@@ -62,7 +72,12 @@ const Index = props => {
                 __html: `<div [text]="0 + foo">0</div>`
               }}
             /> */}
-            <amp-sidebar id="sidebar1" style={{display: "none"}} layout="nodisplay" side="left">
+            <amp-sidebar
+              id="sidebar1"
+              style={{ display: "none" }}
+              layout="nodisplay"
+              side="left"
+            >
               <ul>
                 <li>Nav item 1</li>
                 <li>
@@ -81,7 +96,7 @@ const Index = props => {
               </ul>
             </amp-sidebar>
             <span>
-              <FaBeer />
+              <DisplayBeer />
               <div className="buttons">
                 <button
                   onClick={() => setMySite(mySite + 1)}
@@ -89,7 +104,7 @@ const Index = props => {
                 >
                   +
                 </button>
-                <Number mySite={mySite} />
+
                 <button
                   onClick={() => setMySite(mySite - 1)}
                   on="tap:AMP.setState({foo: foo - 1  })"
@@ -97,7 +112,6 @@ const Index = props => {
                   -
                 </button>
               </div>
-              <FaTrashAlt color="red" />
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
               quidem doloremque animi asperiores sit error vitae, similique
               quaerat nesciunt assumenda architecto dignissimos molestias

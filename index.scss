@@ -31,6 +31,7 @@ $p-font: "Lilita One", cursive;
   }
   &:focus {
     outline: none;
+    border: 1px solid $p-button;
   }
   &:disabled {
     background-color: lightgray;
@@ -109,6 +110,7 @@ $p-font: "Lilita One", cursive;
   }
   &:focus {
     outline: none;
+    border: 1px solid blue;
   }
   &:disabled {
     background-color: lightgray;
@@ -785,6 +787,11 @@ label {
     .close-profile-form{
       position: absolute;
       right: 0;
+    }
+    .form__profile__buttons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .profile-form-submit {
       color: white;
